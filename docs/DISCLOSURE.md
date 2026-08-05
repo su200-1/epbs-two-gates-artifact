@@ -242,39 +242,46 @@ and we will move it.
 
 ---
 
-# Companion: short `ethereum/consensus-specs` issue
+# Companion: `ethereum/consensus-specs` issue
 
-The text above is written for a research forum, where long form is normal. Posting the
-same wall of text as a repository issue tends to get it triaged as "known trade-off, see
-the EIP rationale" and closed. The pattern that works is a short issue built around the
-one narrowly actionable observation, linking out for the rest.
-
-Post the long version first so the link exists, then open this.
+The write-up above is the full account. The repository issue below is a short version
+built around what holds in the specification as it stands today, and links back here for
+the rest. Everything in it is present-tense: it makes no assumption about future
+parameter choices.
 
 **Title**
 
 ```
-gloas: raising PAYLOAD_TIMELY_THRESHOLD to 2/3 lowers the cost of the withhold path
+gloas: denying should_extend_payload's PTC affirmation takes 256 withheld votes, not 257 signed ones
 ```
 
 **Body**
 
 ```markdown
-EIP-7732's rationale suggests that the PTC-equivocation concern "could be mitigated by
-setting `PAYLOAD_TIMELY_THRESHOLD` to be 2/3 of the PTC". While auditing `gloas` we
-found that this change is direction-sensitive, because the committee's verdict is
-consumed by two different functions that need opposite majorities:
+*Filing this publicly rather than via bounty@ethereum.org: `gloas` is not deployed,
+nothing in the bounty programme's scope is affected, and this concerns a stated design
+trade-off rather than an implementation bug. Happy to move it if you disagree.*
 
-- `should_build_on_full` (fork-choice.md L423-433) is fail-open. Flipping it requires
-  `payload_timeliness(..., timely=False)`, i.e. **T+1 signed `not present` votes**.
-- `should_extend_payload` (fork-choice.md L445-457) queries the committee in the other
-  direction, `timely=True`. Denying that affirmation requires only **N-T seats to stay
-  silent** — and since the tally is initialised `[None] * PTC_SIZE` and the predicate
-  counts `vote == timely`, an absent seat counts for neither side, so silence suffices.
-  (This route additionally needs the next slot's proposer to build EMPTY on the target.)
+While auditing `gloas` we noticed that the PTC's verdict is read by two functions that
+query it in **opposite directions**, so the two have different pivotal costs and, more
+importantly, different evidentiary footprints. At the current
+`PAYLOAD_TIMELY_THRESHOLD = PTC_SIZE // 2`:
 
-At `N = 512`, moving `T` from 256 to 341 raises the first cost from 257 to 342 seats and
-lowers the second from 256 to 171 — the same 85 seats, in opposite directions.
+- `should_build_on_full` (fork-choice.md L423-433) is fail-open. To make the next
+  proposer build EMPTY on a punctually revealed payload you must satisfy
+  `payload_timeliness(..., timely=False)` — that is, **257 seats must sign a
+  `not present` vote**. Those signatures are permanent, attributable objects.
+- `should_extend_payload` (fork-choice.md L445-457) queries the committee the other way,
+  `timely=True`. Defeating that affirmation needs only **256 seats to withhold their
+  vote**: the tally is initialised `[None] * PTC_SIZE` and the predicate counts
+  `vote == timely`, so an absent seat counts toward neither side. There is nothing to
+  sign, and a withheld payload attestation is indistinguishable from latency, a client
+  fault, or ordinary downtime. (This route does additionally require the next slot's
+  proposer to build EMPTY on the target, which is itself an attributable deviation.)
+
+So the cheaper-to-hide route costs one seat *less* than the loud one, and no rule
+written over cast votes can reach it — an accountability or slashing condition on
+payload attestations would bind the first route and not the second.
 
 Reproducible against the generated spec (checked at 46d3d3513):
 
@@ -283,22 +290,25 @@ Reproducible against the generated spec (checked at 46d3d3513):
 
 Two questions:
 
-1. Is the 2/3 suggestion intended to be paired with an accountability rule on cast
-   votes? On its own it moves cost from the attributable route to the unattributable
-   one, since withheld votes are indistinguishable from latency or downtime.
+1. Was this asymmetry intended? Treating a `None` seat as neutral is clearly deliberate
+   for the affirmative query; the consequence that the *denial* is therefore reachable
+   without producing any evidence seems worth stating explicitly somewhere.
 2. Separately: `process_builder_pending_payments` settles on attestation weight alone
    and never reads the PTC vote, so a builder that revealed on time still pays when its
    payload is orphaned by either route. We understand unconditional settlement is
    deliberate (closing the builder free option); was the third-party case — an honest
    builder griefed by others — evaluated, or only the builder's own withholding?
 
-Full write-up, threat model, and a runnable script: <ethresear.ch link>
+One consequence worth flagging in case the threshold is ever revisited: for a committee
+of `N` seats and threshold `T`, the first route costs `T+1` and the second `N-T`, so the
+two move in opposite directions. EIP-7732's rationale mentions `2/3` as a possible
+mitigation for PTC equivocation; at `N = 512` that would raise the first cost from 257
+to 342 and lower the second from 256 to 171. We raise this only as a property of the
+parameterisation, not as a claim that such a change is planned.
+
+Full write-up, threat model, and a runnable script: <write-up link>
 ```
 
-Keep it at that length. If a maintainer wants the economics, the seat-price sweep, or
-the differential suite, they will ask — and the answer to that question is a much better
-second comment than a longer first one.
-
-**Line numbers** in the issue body are for `master` @ `46d3d3513`; re-check them on the
-day you post (the file moved by one line in the 80 commits before that, and upstream is
-running at roughly that rate).
+**Before posting**, replace `<write-up link>` with the URL of this file, and re-check the
+line numbers: they are for `master` @ `46d3d3513`, and upstream moved these functions by
+one line in the 80 commits preceding it.
