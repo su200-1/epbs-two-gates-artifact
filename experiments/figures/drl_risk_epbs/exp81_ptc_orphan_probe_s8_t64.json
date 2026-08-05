@@ -1,0 +1,71 @@
+{
+  "schema": "exp81-v2",
+  "aggregation": "pooled_over_reveals_with_observed_child",
+  "right_censoring_note": "Final-slot reveals without an observed child are reported separately and excluded from the orphan-rate denominator.",
+  "baseline_debit_gwei": 259037609.25,
+  "rows": [
+    {
+      "mode": "baseline",
+      "ptc_false_fraction": 0.0,
+      "revealed_wins": 67,
+      "evaluable_reveals": 66,
+      "orphaned_reveals": 0,
+      "not_orphaned_reveals": 66,
+      "right_censored_reveals": 1,
+      "orphan_rate": 0.0,
+      "debit_mean_gwei": 259037609.25
+    },
+    {
+      "mode": "attack",
+      "ptc_false_fraction": 0.5,
+      "revealed_wins": 67,
+      "evaluable_reveals": 66,
+      "orphaned_reveals": 36,
+      "not_orphaned_reveals": 30,
+      "right_censored_reveals": 1,
+      "orphan_rate": 0.5454545454545454,
+      "debit_mean_gwei": 259037609.25,
+      "still_pays": true,
+      "decoupled": true
+    },
+    {
+      "mode": "attack",
+      "ptc_false_fraction": 0.6,
+      "revealed_wins": 67,
+      "evaluable_reveals": 66,
+      "orphaned_reveals": 40,
+      "not_orphaned_reveals": 26,
+      "right_censored_reveals": 1,
+      "orphan_rate": 0.6060606060606061,
+      "debit_mean_gwei": 259037609.25,
+      "still_pays": true,
+      "decoupled": true
+    },
+    {
+      "mode": "attack",
+      "ptc_false_fraction": 0.75,
+      "revealed_wins": 67,
+      "evaluable_reveals": 66,
+      "orphaned_reveals": 47,
+      "not_orphaned_reveals": 19,
+      "right_censored_reveals": 1,
+      "orphan_rate": 0.7121212121212122,
+      "debit_mean_gwei": 259037609.25,
+      "still_pays": true,
+      "decoupled": true
+    },
+    {
+      "mode": "attack",
+      "ptc_false_fraction": 1.0,
+      "revealed_wins": 67,
+      "evaluable_reveals": 66,
+      "orphaned_reveals": 66,
+      "not_orphaned_reveals": 0,
+      "right_censored_reveals": 1,
+      "orphan_rate": 1.0,
+      "debit_mean_gwei": 259037609.25,
+      "still_pays": true,
+      "decoupled": true
+    }
+  ]
+}

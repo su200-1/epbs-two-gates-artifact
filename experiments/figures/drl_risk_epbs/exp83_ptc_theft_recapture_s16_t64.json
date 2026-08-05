@@ -1,0 +1,108 @@
+{
+  "schema": "exp83-v1",
+  "victim_honest_util_gwei": 1989103677.5735998,
+  "victim_attack_util_gwei": -8559934933.195944,
+  "victim_loss_per_episode_gwei": 10549038610.769543,
+  "orphan_rate": 0.9891098484848485,
+  "orphaned_pool_per_episode_gwei": 10549038610.769545,
+  "pivotal_members": 256,
+  "base_reward_gwei": 14000.0,
+  "rows": [
+    {
+      "rho_recapture": 0.25,
+      "bribe_multiplier": 1.0,
+      "bribe_per_slot_gwei": 3584000.0,
+      "attacker_net_per_episode_all_gwei": 2607467652.692387,
+      "attacker_net_per_episode_selective_gwei": 2747300380.4823675,
+      "selective_hit_rate": 0.8872180451127819
+    },
+    {
+      "rho_recapture": 0.25,
+      "bribe_multiplier": 20.0,
+      "bribe_per_slot_gwei": 71680000.0,
+      "attacker_net_per_episode_all_gwei": 2041419652.692387,
+      "attacker_net_per_episode_selective_gwei": 2270283073.279244,
+      "selective_hit_rate": 0.7894736842105263
+    },
+    {
+      "rho_recapture": 0.25,
+      "bribe_multiplier": 100.0,
+      "bribe_per_slot_gwei": 358400000.0,
+      "attacker_net_per_episode_all_gwei": -341940347.3076129,
+      "attacker_net_per_episode_selective_gwei": 758829691.5725198,
+      "selective_hit_rate": 0.42857142857142855
+    },
+    {
+      "rho_recapture": 0.5,
+      "bribe_multiplier": 1.0,
+      "bribe_per_slot_gwei": 3584000.0,
+      "attacker_net_per_episode_all_gwei": 5244727305.384774,
+      "attacker_net_per_episode_selective_gwei": 5521032760.964734,
+      "selective_hit_rate": 0.8872180451127819
+    },
+    {
+      "rho_recapture": 0.5,
+      "bribe_multiplier": 20.0,
+      "bribe_per_slot_gwei": 71680000.0,
+      "attacker_net_per_episode_all_gwei": 4678679305.384774,
+      "attacker_net_per_episode_selective_gwei": 5028533430.146728,
+      "selective_hit_rate": 0.849624060150376
+    },
+    {
+      "rho_recapture": 0.5,
+      "bribe_multiplier": 100.0,
+      "bribe_per_slot_gwei": 358400000.0,
+      "attacker_net_per_episode_all_gwei": 2295319305.384774,
+      "attacker_net_per_episode_selective_gwei": 3219627893.702608,
+      "selective_hit_rate": 0.6842105263157895
+    },
+    {
+      "rho_recapture": 0.75,
+      "bribe_multiplier": 1.0,
+      "bribe_per_slot_gwei": 3584000.0,
+      "attacker_net_per_episode_all_gwei": 7881986958.077162,
+      "attacker_net_per_episode_selective_gwei": 8294765141.4471,
+      "selective_hit_rate": 0.8872180451127819
+    },
+    {
+      "rho_recapture": 0.75,
+      "bribe_multiplier": 20.0,
+      "bribe_per_slot_gwei": 71680000.0,
+      "attacker_net_per_episode_all_gwei": 7315938958.077162,
+      "attacker_net_per_episode_selective_gwei": 7798282738.051383,
+      "selective_hit_rate": 0.8646616541353384
+    },
+    {
+      "rho_recapture": 0.75,
+      "bribe_multiplier": 100.0,
+      "bribe_per_slot_gwei": 358400000.0,
+      "attacker_net_per_episode_all_gwei": 4932578958.077162,
+      "attacker_net_per_episode_selective_gwei": 5890760146.302999,
+      "selective_hit_rate": 0.7443609022556391
+    },
+    {
+      "rho_recapture": 1.0,
+      "bribe_multiplier": 1.0,
+      "bribe_per_slot_gwei": 3584000.0,
+      "attacker_net_per_episode_all_gwei": 10519246610.769548,
+      "attacker_net_per_episode_selective_gwei": 11068497521.929468,
+      "selective_hit_rate": 0.8872180451127819
+    },
+    {
+      "rho_recapture": 1.0,
+      "bribe_multiplier": 20.0,
+      "bribe_per_slot_gwei": 71680000.0,
+      "attacker_net_per_episode_all_gwei": 9953198610.769548,
+      "attacker_net_per_episode_selective_gwei": 10570095744.301779,
+      "selective_hit_rate": 0.8721804511278195
+    },
+    {
+      "rho_recapture": 1.0,
+      "bribe_multiplier": 100.0,
+      "bribe_per_slot_gwei": 358400000.0,
+      "attacker_net_per_episode_all_gwei": 7569838610.769548,
+      "attacker_net_per_episode_selective_gwei": 8610732293.116976,
+      "selective_hit_rate": 0.7894736842105263
+    }
+  ]
+}

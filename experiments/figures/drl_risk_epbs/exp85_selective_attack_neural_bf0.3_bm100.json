@@ -1,0 +1,48 @@
+{
+  "schema": "exp85-v2",
+  "params": {
+    "train_seeds": 40,
+    "eval_seeds": 40,
+    "slots": 64,
+    "median_eth": 0.04,
+    "sigma": 1.6,
+    "signal_noise": 0.9,
+    "owned_frac": 0.0,
+    "bribe_multiplier": 100.0,
+    "rho": 0.5,
+    "budget_frac": 0.3,
+    "epochs": 300
+  },
+  "naive_gwei": -5541262466.144287,
+  "best_signal_gwei": 812661459.3589008,
+  "best_net_gwei": 811598001.6155941,
+  "neural_seed_values": [
+    {
+      "seed": 0,
+      "mean_gwei": -381210425.82983714
+    },
+    {
+      "seed": 1,
+      "mean_gwei": -350187192.42900956
+    },
+    {
+      "seed": 2,
+      "mean_gwei": -391324067.5616783
+    },
+    {
+      "seed": 3,
+      "mean_gwei": -411376564.8259516
+    },
+    {
+      "seed": 4,
+      "mean_gwei": -113973680.09300591
+    }
+  ],
+  "neural_mean_gwei": -329614386.14789647,
+  "neural_sd_gwei": 122555542.93805419,
+  "neural_min_gwei": -411376564.8259516,
+  "neural_max_gwei": -113973680.09300591,
+  "foresight_reference_gwei": 1201462165.1247673,
+  "comparison_note": "Descriptive negative evidence only: signal and net-value thresholds were tuned on the evaluation episodes; all five neural initializations are reported.",
+  "n_seeds": 5
+}

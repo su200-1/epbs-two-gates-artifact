@@ -1,0 +1,43 @@
+{
+  "schema": "exp86-v3",
+  "m1_victim_honest_gwei": 59673114.420958005,
+  "m1_victim_attack_no_mit_gwei": -256798043.90212834,
+  "m1_victim_attack_mit_gwei": 1558667.285371676,
+  "m1_griefing_removed_gwei": 258356711.1875,
+  "orphan_rate": 0.9891098484848485,
+  "pivotal_members": 257,
+  "protocol_direct_penalty_eth": 0.0,
+  "reservation_price_model": "exogenous_per_seat",
+  "baseline_per_seat_price_eth": 0.0014,
+  "stake_gwei": 32000000000.0,
+  "m2_penalty_rows": [
+    {
+      "accountability_penalty_per_seat_eth": 0.0,
+      "total_per_seat_cost_eth": 0.0014,
+      "total_recruitment_cost_eth": 0.3598
+    },
+    {
+      "accountability_penalty_per_seat_eth": 0.001,
+      "total_per_seat_cost_eth": 0.0024000000000000002,
+      "total_recruitment_cost_eth": 0.6168
+    },
+    {
+      "accountability_penalty_per_seat_eth": 0.01,
+      "total_per_seat_cost_eth": 0.0114,
+      "total_recruitment_cost_eth": 2.9298
+    }
+  ],
+  "m3_stake_penalty_rows": [
+    {
+      "stake_penalty_frac": 0.001,
+      "total_per_seat_cost_eth": 0.0334,
+      "total_recruitment_cost_eth": 8.5838
+    },
+    {
+      "stake_penalty_frac": 0.01,
+      "total_per_seat_cost_eth": 0.3214,
+      "total_recruitment_cost_eth": 82.5998
+    }
+  ],
+  "note": "M1 removes out-of-pocket griefing but not theft/DoS; M2/M3 attack the economics."
+}

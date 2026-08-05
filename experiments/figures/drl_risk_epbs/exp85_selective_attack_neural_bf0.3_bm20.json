@@ -1,0 +1,26 @@
+{
+  "schema": "exp85-v1",
+  "params": {
+    "train_seeds": 40,
+    "eval_seeds": 40,
+    "slots": 64,
+    "median_eth": 0.04,
+    "sigma": 1.6,
+    "signal_noise": 0.9,
+    "owned_frac": 0.0,
+    "bribe_multiplier": 20.0,
+    "rho": 0.5,
+    "budget_frac": 0.3,
+    "epochs": 300
+  },
+  "naive_gwei": -72302466.14428684,
+  "best_signal_gwei": 2311791914.04488,
+  "best_net_gwei": 2466907159.1275277,
+  "neural_best_gwei": 2038867331.400436,
+  "ceiling_gwei": 2817139992.982106,
+  "neural_vs_signal_ci95_low_gwei": -655022517.0453784,
+  "neural_vs_net_ci95_low_gwei": -771064021.56076,
+  "n_beats_signal": 0,
+  "n_beats_net": 0,
+  "n_seeds": 5
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "exp84-v1",
+  "params": {
+    "seeds": 48,
+    "slots": 64,
+    "median_eth": 0.04,
+    "sigma": 1.6,
+    "signal_noise": 0.9,
+    "owned_frac": 0.45,
+    "bribe_multiplier": 100.0,
+    "rho": 0.5,
+    "budget_frac": 0.6,
+    "out_dir": "experiments/figures/drl_risk_epbs",
+    "per_member_bribe_gwei": 1400000.0
+  },
+  "naive_mean_gwei": 1453948453.6142118,
+  "signal_only_mean_gwei": 2705250254.16707,
+  "best_tau": 27545781.229871765,
+  "state_cond_mean_gwei": 2779845397.6451173,
+  "best_kappa": 0.0,
+  "sc_minus_signal_mean_gwei": 74595143.47804701,
+  "sc_minus_signal_ci95_low_gwei": 32277777.891568676,
+  "sc_beats_signal": true
+}

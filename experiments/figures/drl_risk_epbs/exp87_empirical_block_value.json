@@ -1,0 +1,64 @@
+{
+  "schema": "exp87-v3",
+  "n": 4800,
+  "source": "flashbots boost-relay proposer_payload_delivered",
+  "latest_slot": 14682391,
+  "median_eth": 0.008656337566257841,
+  "mean_eth": 0.0316996141485444,
+  "top20_value_share": 0.7982417347515324,
+  "pivotal_members": 257,
+  "protocol_direct_penalty_eth": 0.0,
+  "reservation_price_model": "exogenous_per_seat",
+  "per_seat_prices_eth": [
+    0.0,
+    1e-05,
+    0.0001,
+    0.001,
+    0.01,
+    0.1
+  ],
+  "rows": [
+    {
+      "per_seat_reservation_price_eth": 0.0,
+      "total_reservation_cost_eth": 0.0,
+      "break_even_eth": 0.0,
+      "empirical_frac_blocks": 1.0,
+      "empirical_frac_value": 1.0
+    },
+    {
+      "per_seat_reservation_price_eth": 1e-05,
+      "total_reservation_cost_eth": 0.00257,
+      "break_even_eth": 0.00257,
+      "empirical_frac_blocks": 0.9914583333333333,
+      "empirical_frac_value": 0.9993887936983493
+    },
+    {
+      "per_seat_reservation_price_eth": 0.0001,
+      "total_reservation_cost_eth": 0.0257,
+      "break_even_eth": 0.0257,
+      "empirical_frac_blocks": 0.100625,
+      "empirical_frac_value": 0.7355329054943771
+    },
+    {
+      "per_seat_reservation_price_eth": 0.001,
+      "total_reservation_cost_eth": 0.257,
+      "break_even_eth": 0.257,
+      "empirical_frac_blocks": 0.007916666666666667,
+      "empirical_frac_value": 0.5908757170683364
+    },
+    {
+      "per_seat_reservation_price_eth": 0.01,
+      "total_reservation_cost_eth": 2.57,
+      "break_even_eth": 2.57,
+      "empirical_frac_blocks": 0.00125,
+      "empirical_frac_value": 0.4329003835378617
+    },
+    {
+      "per_seat_reservation_price_eth": 0.1,
+      "total_reservation_cost_eth": 25.7,
+      "break_even_eth": 25.7,
+      "empirical_frac_blocks": 0.00020833333333333335,
+      "empirical_frac_value": 0.3016858879240857
+    }
+  ]
+}

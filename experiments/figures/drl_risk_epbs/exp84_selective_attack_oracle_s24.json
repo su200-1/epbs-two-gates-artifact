@@ -1,0 +1,26 @@
+{
+  "schema": "exp84-v2",
+  "params": {
+    "seeds": 24,
+    "slots": 64,
+    "median_eth": 0.04,
+    "sigma": 1.6,
+    "signal_noise": 0.6,
+    "owned_frac": 0.0,
+    "per_seat_price_eth": 0.0014,
+    "rho": 0.5,
+    "budget_frac": 0.4,
+    "out_dir": "experiments/figures/drl_risk_epbs",
+    "per_seat_reservation_price_gwei": 1400000.0,
+    "protocol_direct_penalty_eth": 0.0,
+    "reservation_price_model": "exogenous_per_seat"
+  },
+  "naive_mean_gwei": -7118146611.604732,
+  "signal_only_mean_gwei": 793738456.5900486,
+  "best_tau": 948318881.9506464,
+  "state_cond_mean_gwei": 836258395.4733778,
+  "best_kappa": 38447709.44785417,
+  "sc_minus_signal_mean_gwei": 42519938.88332928,
+  "sc_minus_signal_ci95_low_gwei": -20957252.086309828,
+  "sc_beats_signal": false
+}

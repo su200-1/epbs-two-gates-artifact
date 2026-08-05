@@ -1,0 +1,32 @@
+{
+  "title": "Artifact for \"The Two Gates of ePBS: A Fixed-Seat Payload-Timeliness Orphaning and Builder-Griefing Surface\"",
+  "upload_type": "software",
+  "description": "<p>Reproducibility artifact for the paper. Contains a spec-anchored simulator port of the Ethereum ePBS (EIP-7732 / gloas) payment, settlement, payload-timeliness and fork-choice paths; the experiments cited by the paper (exp81-exp88, exp92-exp94); differential/conformance tests against the executable pyspec for the load-bearing predicates; and a bundled 493,330-block, eight-relay block-value extract so the economic tables reproduce with no external download.</p><p>Entry point: <code>docs/PAPER3_ARTIFACT_README.md</code> maps each paper section to its command. <code>bash experiments/reproduce_paper3.sh</code> regenerates every headline result in one invocation.</p><p>Pinned consensus-specs snapshot: ec1c01f5f10fb60636a022ae8944c912b6da35f8.</p>",
+  "creators": [
+    {
+      "name": "FILL IN: Family, Given",
+      "affiliation": "FILL IN",
+      "orcid": "FILL IN OR REMOVE THIS FIELD"
+    }
+  ],
+  "license": "mit",
+  "access_right": "open",
+  "keywords": [
+    "Ethereum",
+    "ePBS",
+    "EIP-7732",
+    "proposer-builder separation",
+    "payload timeliness committee",
+    "MEV",
+    "consensus security",
+    "reproducibility artifact"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "FILL IN AFTER ACCEPTANCE: paper DOI",
+      "resource_type": "publication-article"
+    }
+  ],
+  "notes": "Block-value data derived from the public builder_blocks_received relay archives via RelayScan, with on-chain block fields from XBlock-ETH (Zheng et al., IEEE OJ-CS 1 (2020) 95-106, doi:10.1109/OJCS.2020.2990458)."
+}

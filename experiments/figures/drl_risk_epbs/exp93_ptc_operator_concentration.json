@@ -1,0 +1,359 @@
+{
+  "schema": "ptc-operator-concentration-v1",
+  "ptc_size": 512,
+  "pivotal_seats": 257,
+  "committees_per_cell": 100000,
+  "seed": 20260722,
+  "sampling_model": "iid stake-weighted seats with replacement",
+  "scope": "Synthetic sensitivity, not an empirical mainnet operator mapping or evidence that any operator would accept a bribe.",
+  "rows": [
+    {
+      "owned_fraction": 0.0,
+      "probability_owned_alone_reaches_257": 0.0,
+      "owned_seats": {
+        "mean": 0.0,
+        "p05": 0.0,
+        "median": 0.0,
+        "p95": 0.0
+      },
+      "additional_pivotal_seats": {
+        "mean": 257.0,
+        "p05": 257.0,
+        "median": 257.0,
+        "p95": 257.0
+      },
+      "distinct_operators_to_coordinate": {
+        "mean": 257.0,
+        "p05": 257.0,
+        "median": 257.0,
+        "p95": 257.0
+      },
+      "seats_controlled_after_whole_operator_contracts": {
+        "mean": 257.0,
+        "p05": 257.0,
+        "median": 257.0,
+        "p95": 257.0
+      },
+      "operator_profile": "distinct-seat upper bound"
+    },
+    {
+      "owned_fraction": 0.1,
+      "probability_owned_alone_reaches_257": 0.0,
+      "owned_seats": {
+        "mean": 51.19934,
+        "p05": 40.0,
+        "median": 51.0,
+        "p95": 63.0
+      },
+      "additional_pivotal_seats": {
+        "mean": 205.80066,
+        "p05": 194.0,
+        "median": 206.0,
+        "p95": 217.0
+      },
+      "distinct_operators_to_coordinate": {
+        "mean": 205.80066,
+        "p05": 194.0,
+        "median": 206.0,
+        "p95": 217.0
+      },
+      "seats_controlled_after_whole_operator_contracts": {
+        "mean": 205.80066,
+        "p05": 194.0,
+        "median": 206.0,
+        "p95": 217.0
+      },
+      "operator_profile": "distinct-seat upper bound"
+    },
+    {
+      "owned_fraction": 0.2,
+      "probability_owned_alone_reaches_257": 0.0,
+      "owned_seats": {
+        "mean": 102.4216,
+        "p05": 88.0,
+        "median": 102.0,
+        "p95": 117.0
+      },
+      "additional_pivotal_seats": {
+        "mean": 154.5784,
+        "p05": 140.0,
+        "median": 155.0,
+        "p95": 169.0
+      },
+      "distinct_operators_to_coordinate": {
+        "mean": 154.5784,
+        "p05": 140.0,
+        "median": 155.0,
+        "p95": 169.0
+      },
+      "seats_controlled_after_whole_operator_contracts": {
+        "mean": 154.5784,
+        "p05": 140.0,
+        "median": 155.0,
+        "p95": 169.0
+      },
+      "operator_profile": "distinct-seat upper bound"
+    },
+    {
+      "owned_fraction": 0.3333333333333333,
+      "probability_owned_alone_reaches_257": 0.0,
+      "owned_seats": {
+        "mean": 170.69611,
+        "p05": 153.0,
+        "median": 171.0,
+        "p95": 188.0
+      },
+      "additional_pivotal_seats": {
+        "mean": 86.30389,
+        "p05": 69.0,
+        "median": 86.0,
+        "p95": 104.0
+      },
+      "distinct_operators_to_coordinate": {
+        "mean": 86.30389,
+        "p05": 69.0,
+        "median": 86.0,
+        "p95": 104.0
+      },
+      "seats_controlled_after_whole_operator_contracts": {
+        "mean": 86.30389,
+        "p05": 69.0,
+        "median": 86.0,
+        "p95": 104.0
+      },
+      "operator_profile": "distinct-seat upper bound"
+    },
+    {
+      "owned_fraction": 0.0,
+      "probability_owned_alone_reaches_257": 0.0,
+      "owned_seats": {
+        "mean": 0.0,
+        "p05": 0.0,
+        "median": 0.0,
+        "p95": 0.0
+      },
+      "additional_pivotal_seats": {
+        "mean": 257.0,
+        "p05": 257.0,
+        "median": 257.0,
+        "p95": 257.0
+      },
+      "distinct_operators_to_coordinate": {
+        "mean": 8.28818,
+        "p05": 7.0,
+        "median": 8.0,
+        "p95": 10.0
+      },
+      "seats_controlled_after_whole_operator_contracts": {
+        "mean": 262.37732,
+        "p05": 257.0,
+        "median": 262.0,
+        "p95": 268.0
+      },
+      "operator_profile": "Zipf(128, alpha=1.0)"
+    },
+    {
+      "owned_fraction": 0.1,
+      "probability_owned_alone_reaches_257": 0.0,
+      "owned_seats": {
+        "mean": 51.22256,
+        "p05": 40.0,
+        "median": 51.0,
+        "p95": 63.0
+      },
+      "additional_pivotal_seats": {
+        "mean": 205.77744,
+        "p05": 194.0,
+        "median": 206.0,
+        "p95": 217.0
+      },
+      "distinct_operators_to_coordinate": {
+        "mean": 6.19847,
+        "p05": 5.0,
+        "median": 6.0,
+        "p95": 8.0
+      },
+      "seats_controlled_after_whole_operator_contracts": {
+        "mean": 212.27296,
+        "p05": 199.0,
+        "median": 212.0,
+        "p95": 225.0
+      },
+      "operator_profile": "Zipf(128, alpha=1.0)"
+    },
+    {
+      "owned_fraction": 0.2,
+      "probability_owned_alone_reaches_257": 0.0,
+      "owned_seats": {
+        "mean": 102.42226,
+        "p05": 88.0,
+        "median": 102.0,
+        "p95": 117.0
+      },
+      "additional_pivotal_seats": {
+        "mean": 154.57774,
+        "p05": 140.0,
+        "median": 155.0,
+        "p95": 169.0
+      },
+      "distinct_operators_to_coordinate": {
+        "mean": 4.301,
+        "p05": 3.0,
+        "median": 4.0,
+        "p95": 5.0
+      },
+      "seats_controlled_after_whole_operator_contracts": {
+        "mean": 162.80572,
+        "p05": 146.0,
+        "median": 163.0,
+        "p95": 179.0
+      },
+      "operator_profile": "Zipf(128, alpha=1.0)"
+    },
+    {
+      "owned_fraction": 0.3333333333333333,
+      "probability_owned_alone_reaches_257": 0.0,
+      "owned_seats": {
+        "mean": 170.70082,
+        "p05": 153.0,
+        "median": 171.0,
+        "p95": 188.0
+      },
+      "additional_pivotal_seats": {
+        "mean": 86.29918,
+        "p05": 69.0,
+        "median": 86.0,
+        "p95": 104.0
+      },
+      "distinct_operators_to_coordinate": {
+        "mean": 2.2027,
+        "p05": 2.0,
+        "median": 2.0,
+        "p95": 3.0
+      },
+      "seats_controlled_after_whole_operator_contracts": {
+        "mean": 98.84742,
+        "p05": 82.0,
+        "median": 98.0,
+        "p95": 119.0
+      },
+      "operator_profile": "Zipf(128, alpha=1.0)"
+    },
+    {
+      "owned_fraction": 0.0,
+      "probability_owned_alone_reaches_257": 0.0,
+      "owned_seats": {
+        "mean": 0.0,
+        "p05": 0.0,
+        "median": 0.0,
+        "p95": 0.0
+      },
+      "additional_pivotal_seats": {
+        "mean": 257.0,
+        "p05": 257.0,
+        "median": 257.0,
+        "p95": 257.0
+      },
+      "distinct_operators_to_coordinate": {
+        "mean": 3.49328,
+        "p05": 3.0,
+        "median": 3.0,
+        "p95": 4.0
+      },
+      "seats_controlled_after_whole_operator_contracts": {
+        "mean": 277.3147,
+        "p05": 258.0,
+        "median": 277.0,
+        "p95": 299.0
+      },
+      "operator_profile": "stylized concentrated (32 operators)"
+    },
+    {
+      "owned_fraction": 0.1,
+      "probability_owned_alone_reaches_257": 0.0,
+      "owned_seats": {
+        "mean": 51.20711,
+        "p05": 40.0,
+        "median": 51.0,
+        "p95": 63.0
+      },
+      "additional_pivotal_seats": {
+        "mean": 205.79289,
+        "p05": 194.0,
+        "median": 206.0,
+        "p95": 217.0
+      },
+      "distinct_operators_to_coordinate": {
+        "mean": 2.97708,
+        "p05": 3.0,
+        "median": 3.0,
+        "p95": 3.0
+      },
+      "seats_controlled_after_whole_operator_contracts": {
+        "mean": 230.08519,
+        "p05": 211.0,
+        "median": 230.0,
+        "p95": 248.0
+      },
+      "operator_profile": "stylized concentrated (32 operators)"
+    },
+    {
+      "owned_fraction": 0.2,
+      "probability_owned_alone_reaches_257": 0.0,
+      "owned_seats": {
+        "mean": 102.38708,
+        "p05": 88.0,
+        "median": 102.0,
+        "p95": 117.0
+      },
+      "additional_pivotal_seats": {
+        "mean": 154.61292,
+        "p05": 140.0,
+        "median": 155.0,
+        "p95": 169.0
+      },
+      "distinct_operators_to_coordinate": {
+        "mean": 2.19254,
+        "p05": 2.0,
+        "median": 2.0,
+        "p95": 3.0
+      },
+      "seats_controlled_after_whole_operator_contracts": {
+        "mean": 172.40603,
+        "p05": 152.0,
+        "median": 169.0,
+        "p95": 205.0
+      },
+      "operator_profile": "stylized concentrated (32 operators)"
+    },
+    {
+      "owned_fraction": 0.3333333333333333,
+      "probability_owned_alone_reaches_257": 0.0,
+      "owned_seats": {
+        "mean": 170.61689,
+        "p05": 153.0,
+        "median": 171.0,
+        "p95": 188.0
+      },
+      "additional_pivotal_seats": {
+        "mean": 86.38311,
+        "p05": 69.0,
+        "median": 86.0,
+        "p95": 104.0
+      },
+      "distinct_operators_to_coordinate": {
+        "mean": 1.52066,
+        "p05": 1.0,
+        "median": 2.0,
+        "p95": 2.0
+      },
+      "seats_controlled_after_whole_operator_contracts": {
+        "mean": 112.91056,
+        "p05": 78.0,
+        "median": 119.0,
+        "p95": 148.0
+      },
+      "operator_profile": "stylized concentrated (32 operators)"
+    }
+  ]
+}

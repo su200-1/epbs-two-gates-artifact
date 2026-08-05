@@ -1,0 +1,32 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# Generated result renders: regenerable by reproduce_paper3.sh. The numeric
+# results themselves (JSON/CSV/MD under experiments/figures/drl_risk_epbs/)
+# are tracked -- see docs/PAPER3_ARTIFACT_README.md.
+experiments/figures/drl_risk_epbs/*.png
+experiments/figures/drl_risk_epbs/*.pdf
+
+# IDE / editor state
+.idea/
+.vscode/
+
+# The manuscript is kept locally but not distributed with the artifact while the
+# paper is under review: the LaTeX source carries revision markup (\rev{}) and
+# pre-submission TODO comments that do not belong in a public repository. Drop
+# this line and add the accepted version once the paper is out.
+manuscript/
+
+# LaTeX build products (kept for local manuscript builds)
+*.aux
+*.abs
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.spl
+*.xdv

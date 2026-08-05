@@ -1,0 +1,71 @@
+{
+  "schema": "exp81-v2",
+  "aggregation": "pooled_over_reveals_with_observed_child",
+  "right_censoring_note": "Final-slot reveals without an observed child are reported separately and excluded from the orphan-rate denominator.",
+  "baseline_debit_gwei": 264125070.33333334,
+  "rows": [
+    {
+      "mode": "baseline",
+      "ptc_false_fraction": 0.0,
+      "revealed_wins": 102,
+      "evaluable_reveals": 100,
+      "orphaned_reveals": 0,
+      "not_orphaned_reveals": 100,
+      "right_censored_reveals": 2,
+      "orphan_rate": 0.0,
+      "debit_mean_gwei": 264125070.33333334
+    },
+    {
+      "mode": "attack",
+      "ptc_false_fraction": 0.5,
+      "revealed_wins": 102,
+      "evaluable_reveals": 100,
+      "orphaned_reveals": 50,
+      "not_orphaned_reveals": 50,
+      "right_censored_reveals": 2,
+      "orphan_rate": 0.5,
+      "debit_mean_gwei": 264125070.33333334,
+      "still_pays": true,
+      "decoupled": true
+    },
+    {
+      "mode": "attack",
+      "ptc_false_fraction": 0.6,
+      "revealed_wins": 102,
+      "evaluable_reveals": 100,
+      "orphaned_reveals": 57,
+      "not_orphaned_reveals": 43,
+      "right_censored_reveals": 2,
+      "orphan_rate": 0.57,
+      "debit_mean_gwei": 264125070.33333334,
+      "still_pays": true,
+      "decoupled": true
+    },
+    {
+      "mode": "attack",
+      "ptc_false_fraction": 0.75,
+      "revealed_wins": 102,
+      "evaluable_reveals": 100,
+      "orphaned_reveals": 69,
+      "not_orphaned_reveals": 31,
+      "right_censored_reveals": 2,
+      "orphan_rate": 0.69,
+      "debit_mean_gwei": 264125070.33333334,
+      "still_pays": true,
+      "decoupled": true
+    },
+    {
+      "mode": "attack",
+      "ptc_false_fraction": 1.0,
+      "revealed_wins": 102,
+      "evaluable_reveals": 100,
+      "orphaned_reveals": 100,
+      "not_orphaned_reveals": 0,
+      "right_censored_reveals": 2,
+      "orphan_rate": 1.0,
+      "debit_mean_gwei": 264125070.33333334,
+      "still_pays": true,
+      "decoupled": true
+    }
+  ]
+}

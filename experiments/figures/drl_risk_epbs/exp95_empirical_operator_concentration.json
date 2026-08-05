@@ -1,0 +1,123 @@
+{
+  "schema": "empirical-operator-supply-v1",
+  "source": "Rated Network mainnet explorer, node-operator view, accessed 2026-07-22",
+  "attributed_operators": 51,
+  "attributed_stake_share": 0.3722,
+  "unattributed_stake_share": 0.6278,
+  "largest_operator_share": 0.0745,
+  "ptc_size": 512,
+  "pivotal": 257,
+  "committees_per_cell": 100000,
+  "seed": 20260722,
+  "scope": "Uses measured shares only; the unattributed remainder is kept as one aggregate bucket and never split into invented operators. Operator counts use the attacker-optimal largest-first order and are lower bounds. Not evidence that any operator would accept a bribe.",
+  "rows": [
+    {
+      "owned_fraction": 0.0,
+      "owned_seats": {
+        "median": 0.0,
+        "p05": 0.0,
+        "p95": 0.0
+      },
+      "marginal_seats": {
+        "median": 257.0,
+        "p05": 257.0,
+        "p95": 257.0
+      },
+      "seats_supplied_by_attributed_set": {
+        "median": 191.0,
+        "p05": 173.0,
+        "p95": 209.0
+      },
+      "share_of_committees_head_suffices": 0.0,
+      "operators_to_coordinate": null,
+      "note": "the whole attributed operator set is insufficient; the coalition must also reach unattributed stake"
+    },
+    {
+      "owned_fraction": 0.1,
+      "owned_seats": {
+        "median": 51.0,
+        "p05": 40.0,
+        "p95": 63.0
+      },
+      "marginal_seats": {
+        "median": 206.0,
+        "p05": 194.0,
+        "p95": 217.0
+      },
+      "seats_supplied_by_attributed_set": {
+        "median": 171.0,
+        "p05": 154.0,
+        "p95": 189.0
+      },
+      "share_of_committees_head_suffices": 0.00156,
+      "operators_to_coordinate": null,
+      "note": "the whole attributed operator set is insufficient; the coalition must also reach unattributed stake"
+    },
+    {
+      "owned_fraction": 0.2,
+      "owned_seats": {
+        "median": 102.0,
+        "p05": 88.0,
+        "p95": 118.0
+      },
+      "marginal_seats": {
+        "median": 155.0,
+        "p05": 139.0,
+        "p95": 169.0
+      },
+      "seats_supplied_by_attributed_set": {
+        "median": 152.0,
+        "p05": 136.0,
+        "p95": 170.0
+      },
+      "share_of_committees_head_suffices": 0.44306,
+      "operators_to_coordinate": null,
+      "note": "the whole attributed operator set is insufficient; the coalition must also reach unattributed stake"
+    },
+    {
+      "owned_fraction": 0.25,
+      "owned_seats": {
+        "median": 128.0,
+        "p05": 112.0,
+        "p95": 144.0
+      },
+      "marginal_seats": {
+        "median": 129.0,
+        "p05": 113.0,
+        "p95": 145.0
+      },
+      "seats_supplied_by_attributed_set": {
+        "median": 143.0,
+        "p05": 126.0,
+        "p95": 160.0
+      },
+      "share_of_committees_head_suffices": 0.89995,
+      "operators_to_coordinate": null,
+      "note": "the whole attributed operator set is insufficient; the coalition must also reach unattributed stake"
+    },
+    {
+      "owned_fraction": 0.3333333333333333,
+      "owned_seats": {
+        "median": 171.0,
+        "p05": 153.0,
+        "p95": 188.0
+      },
+      "marginal_seats": {
+        "median": 86.0,
+        "p05": 69.0,
+        "p95": 104.0
+      },
+      "seats_supplied_by_attributed_set": {
+        "median": 127.0,
+        "p05": 111.0,
+        "p95": 143.0
+      },
+      "share_of_committees_head_suffices": 0.99989,
+      "operators_to_coordinate": {
+        "median": 12.0,
+        "p05": 7.0,
+        "p95": 19.0
+      }
+    }
+  ]
+}

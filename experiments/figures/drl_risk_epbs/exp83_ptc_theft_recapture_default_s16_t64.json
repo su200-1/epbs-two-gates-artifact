@@ -1,0 +1,129 @@
+{
+  "schema": "exp83-v3",
+  "scenario": "default",
+  "expected_profit_gwei": 30000000.0,
+  "markout_sigma_frac": 1.15,
+  "victim_honest_util_gwei": 59673114.420958005,
+  "victim_attack_util_gwei": -256798043.90212834,
+  "victim_loss_per_episode_gwei": 316471158.3230863,
+  "orphan_rate": 0.9891098484848485,
+  "orphaned_pool_per_episode_gwei": 316471158.3230863,
+  "pivotal_members": 257,
+  "protocol_direct_penalty_eth": 0.0,
+  "reservation_price_model": "exogenous_per_seat",
+  "per_seat_prices_eth": [
+    1e-05,
+    0.0001,
+    0.001
+  ],
+  "rows": [
+    {
+      "rho_recapture": 0.25,
+      "per_seat_reservation_price_eth": 1e-05,
+      "per_seat_reservation_price_gwei": 10000.0,
+      "recruitment_cost_per_slot_gwei": 2570000.0,
+      "attacker_net_per_episode_all_gwei": 57754664.580771625,
+      "attacker_net_per_episode_selective_gwei": 65354867.19837733,
+      "selective_hit_rate": 0.7894736842105263
+    },
+    {
+      "rho_recapture": 0.25,
+      "per_seat_reservation_price_eth": 0.0001,
+      "per_seat_reservation_price_gwei": 100000.0,
+      "recruitment_cost_per_slot_gwei": 25700000.0,
+      "attacker_net_per_episode_all_gwei": -134513460.41922837,
+      "attacker_net_per_episode_selective_gwei": 1129209.6798793606,
+      "selective_hit_rate": 0.03007518796992481
+    },
+    {
+      "rho_recapture": 0.25,
+      "per_seat_reservation_price_eth": 0.001,
+      "per_seat_reservation_price_gwei": 1000000.0,
+      "recruitment_cost_per_slot_gwei": 257000000.0,
+      "attacker_net_per_episode_all_gwei": -2057194710.4192283,
+      "attacker_net_per_episode_selective_gwei": 0.0,
+      "selective_hit_rate": 0.0
+    },
+    {
+      "rho_recapture": 0.5,
+      "per_seat_reservation_price_eth": 1e-05,
+      "per_seat_reservation_price_gwei": 10000.0,
+      "recruitment_cost_per_slot_gwei": 2570000.0,
+      "attacker_net_per_episode_all_gwei": 136872454.16154325,
+      "attacker_net_per_episode_selective_gwei": 147908195.98456404,
+      "selective_hit_rate": 0.8345864661654135
+    },
+    {
+      "rho_recapture": 0.5,
+      "per_seat_reservation_price_eth": 0.0001,
+      "per_seat_reservation_price_gwei": 100000.0,
+      "recruitment_cost_per_slot_gwei": 25700000.0,
+      "attacker_net_per_episode_all_gwei": -55395670.83845675,
+      "attacker_net_per_episode_selective_gwei": 31628804.085851185,
+      "selective_hit_rate": 0.3684210526315789
+    },
+    {
+      "rho_recapture": 0.5,
+      "per_seat_reservation_price_eth": 0.001,
+      "per_seat_reservation_price_gwei": 1000000.0,
+      "recruitment_cost_per_slot_gwei": 257000000.0,
+      "attacker_net_per_episode_all_gwei": -1978076920.8384566,
+      "attacker_net_per_episode_selective_gwei": 0.0,
+      "selective_hit_rate": 0.0
+    },
+    {
+      "rho_recapture": 0.75,
+      "per_seat_reservation_price_eth": 1e-05,
+      "per_seat_reservation_price_gwei": 10000.0,
+      "recruitment_cost_per_slot_gwei": 2570000.0,
+      "attacker_net_per_episode_all_gwei": 215990243.74231488,
+      "attacker_net_per_episode_selective_gwei": 230938002.28844967,
+      "selective_hit_rate": 0.8571428571428571
+    },
+    {
+      "rho_recapture": 0.75,
+      "per_seat_reservation_price_eth": 0.0001,
+      "per_seat_reservation_price_gwei": 100000.0,
+      "recruitment_cost_per_slot_gwei": 25700000.0,
+      "attacker_net_per_episode_all_gwei": 23722118.742314875,
+      "attacker_net_per_episode_selective_gwei": 95824273.61725688,
+      "selective_hit_rate": 0.5714285714285714
+    },
+    {
+      "rho_recapture": 0.75,
+      "per_seat_reservation_price_eth": 0.001,
+      "per_seat_reservation_price_gwei": 1000000.0,
+      "recruitment_cost_per_slot_gwei": 257000000.0,
+      "attacker_net_per_episode_all_gwei": -1898959131.2576852,
+      "attacker_net_per_episode_selective_gwei": 0.0,
+      "selective_hit_rate": 0.0
+    },
+    {
+      "rho_recapture": 1.0,
+      "per_seat_reservation_price_eth": 1e-05,
+      "per_seat_reservation_price_gwei": 10000.0,
+      "recruitment_cost_per_slot_gwei": 2570000.0,
+      "attacker_net_per_episode_all_gwei": 295108033.3230865,
+      "attacker_net_per_episode_selective_gwei": 314067434.52205545,
+      "selective_hit_rate": 0.8646616541353384
+    },
+    {
+      "rho_recapture": 1.0,
+      "per_seat_reservation_price_eth": 0.0001,
+      "per_seat_reservation_price_gwei": 100000.0,
+      "recruitment_cost_per_slot_gwei": 25700000.0,
+      "attacker_net_per_episode_all_gwei": 102839908.3230865,
+      "attacker_net_per_episode_selective_gwei": 170346577.14270344,
+      "selective_hit_rate": 0.6466165413533834
+    },
+    {
+      "rho_recapture": 1.0,
+      "per_seat_reservation_price_eth": 0.001,
+      "per_seat_reservation_price_gwei": 1000000.0,
+      "recruitment_cost_per_slot_gwei": 257000000.0,
+      "attacker_net_per_episode_all_gwei": -1819841341.6769135,
+      "attacker_net_per_episode_selective_gwei": 0.0,
+      "selective_hit_rate": 0.0
+    }
+  ]
+}

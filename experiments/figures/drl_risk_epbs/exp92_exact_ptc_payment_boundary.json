@@ -1,0 +1,144 @@
+{
+  "schema": "exact-ptc-payment-boundary-v1",
+  "artifact_commit": "7939874",
+  "ptc_size": 512,
+  "payload_timely_threshold": 256,
+  "pivotal_not_present_votes": 257,
+  "payment_threshold": "60% of one slot's expected active balance",
+  "payment_amount_gwei": 100000000,
+  "rows": [
+    {
+      "not_present_ptc_votes": 255,
+      "payment_weight_pct": 59,
+      "payload_not_timely": false,
+      "parent_status": "FULL",
+      "payment_quorum_gwei": 614400000000,
+      "payment_weight_gwei": 604160000000,
+      "payment_settled": false,
+      "builder_debit_gwei": 0,
+      "proposer_credit_gwei": 0
+    },
+    {
+      "not_present_ptc_votes": 255,
+      "payment_weight_pct": 60,
+      "payload_not_timely": false,
+      "parent_status": "FULL",
+      "payment_quorum_gwei": 614400000000,
+      "payment_weight_gwei": 614400000000,
+      "payment_settled": true,
+      "builder_debit_gwei": 100000000,
+      "proposer_credit_gwei": 100000000
+    },
+    {
+      "not_present_ptc_votes": 255,
+      "payment_weight_pct": 61,
+      "payload_not_timely": false,
+      "parent_status": "FULL",
+      "payment_quorum_gwei": 614400000000,
+      "payment_weight_gwei": 624640000000,
+      "payment_settled": true,
+      "builder_debit_gwei": 100000000,
+      "proposer_credit_gwei": 100000000
+    },
+    {
+      "not_present_ptc_votes": 256,
+      "payment_weight_pct": 59,
+      "payload_not_timely": false,
+      "parent_status": "FULL",
+      "payment_quorum_gwei": 614400000000,
+      "payment_weight_gwei": 604160000000,
+      "payment_settled": false,
+      "builder_debit_gwei": 0,
+      "proposer_credit_gwei": 0
+    },
+    {
+      "not_present_ptc_votes": 256,
+      "payment_weight_pct": 60,
+      "payload_not_timely": false,
+      "parent_status": "FULL",
+      "payment_quorum_gwei": 614400000000,
+      "payment_weight_gwei": 614400000000,
+      "payment_settled": true,
+      "builder_debit_gwei": 100000000,
+      "proposer_credit_gwei": 100000000
+    },
+    {
+      "not_present_ptc_votes": 256,
+      "payment_weight_pct": 61,
+      "payload_not_timely": false,
+      "parent_status": "FULL",
+      "payment_quorum_gwei": 614400000000,
+      "payment_weight_gwei": 624640000000,
+      "payment_settled": true,
+      "builder_debit_gwei": 100000000,
+      "proposer_credit_gwei": 100000000
+    },
+    {
+      "not_present_ptc_votes": 257,
+      "payment_weight_pct": 59,
+      "payload_not_timely": true,
+      "parent_status": "EMPTY",
+      "payment_quorum_gwei": 614400000000,
+      "payment_weight_gwei": 604160000000,
+      "payment_settled": false,
+      "builder_debit_gwei": 0,
+      "proposer_credit_gwei": 0
+    },
+    {
+      "not_present_ptc_votes": 257,
+      "payment_weight_pct": 60,
+      "payload_not_timely": true,
+      "parent_status": "EMPTY",
+      "payment_quorum_gwei": 614400000000,
+      "payment_weight_gwei": 614400000000,
+      "payment_settled": true,
+      "builder_debit_gwei": 100000000,
+      "proposer_credit_gwei": 100000000
+    },
+    {
+      "not_present_ptc_votes": 257,
+      "payment_weight_pct": 61,
+      "payload_not_timely": true,
+      "parent_status": "EMPTY",
+      "payment_quorum_gwei": 614400000000,
+      "payment_weight_gwei": 624640000000,
+      "payment_settled": true,
+      "builder_debit_gwei": 100000000,
+      "proposer_credit_gwei": 100000000
+    },
+    {
+      "not_present_ptc_votes": 258,
+      "payment_weight_pct": 59,
+      "payload_not_timely": true,
+      "parent_status": "EMPTY",
+      "payment_quorum_gwei": 614400000000,
+      "payment_weight_gwei": 604160000000,
+      "payment_settled": false,
+      "builder_debit_gwei": 0,
+      "proposer_credit_gwei": 0
+    },
+    {
+      "not_present_ptc_votes": 258,
+      "payment_weight_pct": 60,
+      "payload_not_timely": true,
+      "parent_status": "EMPTY",
+      "payment_quorum_gwei": 614400000000,
+      "payment_weight_gwei": 614400000000,
+      "payment_settled": true,
+      "builder_debit_gwei": 100000000,
+      "proposer_credit_gwei": 100000000
+    },
+    {
+      "not_present_ptc_votes": 258,
+      "payment_weight_pct": 61,
+      "payload_not_timely": true,
+      "parent_status": "EMPTY",
+      "payment_quorum_gwei": 614400000000,
+      "payment_weight_gwei": 624640000000,
+      "payment_settled": true,
+      "builder_debit_gwei": 100000000,
+      "proposer_credit_gwei": 100000000
+    }
+  ],
+  "evidentiary_boundary": "Deterministic protocol-predicate experiment; does not estimate PTC recruitment probability or transaction-level MEV recapture."
+}

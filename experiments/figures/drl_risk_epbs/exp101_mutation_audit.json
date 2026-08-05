@@ -1,0 +1,40 @@
+{
+  "schema": "mutation-audit-v1",
+  "target": "epbs/primitives.py",
+  "tests": [
+    "difftest/test_primitives.py",
+    "difftest/test_forkchoice.py",
+    "difftest/test_attestation.py",
+    "difftest/test_builder_payments.py",
+    "difftest/test_committee.py"
+  ],
+  "n_mutants": 4,
+  "n_killed": 4,
+  "mutation_score": 1.0,
+  "results": [
+    {
+      "id": "M1",
+      "description": "threshold comparison > -> >= (pivotal 257 -> 256)",
+      "applied": true,
+      "killed": true
+    },
+    {
+      "id": "M2",
+      "description": "threshold constant off-by-one (+1)",
+      "applied": true,
+      "killed": true
+    },
+    {
+      "id": "M3",
+      "description": "silence semantics: None counted as a vote",
+      "applied": true,
+      "killed": true
+    },
+    {
+      "id": "M4",
+      "description": "local short-circuit direction flipped",
+      "applied": true,
+      "killed": true
+    }
+  ]
+}

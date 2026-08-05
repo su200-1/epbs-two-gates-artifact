@@ -1,0 +1,219 @@
+{
+  "schema": "orphan-persistence-v1",
+  "n_validators": 64,
+  "follow_slots": 6,
+  "pivotal": 257,
+  "results": [
+    {
+      "scenario": "honest",
+      "should_build_on_full": true,
+      "selected_at_t_plus_1": "FULL",
+      "attesters_voted_present": true,
+      "after_window": [
+        {
+          "slot": 3,
+          "weight_FULL": 2048000000000,
+          "weight_EMPTY": 0,
+          "survivor": "FULL",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 4,
+          "weight_FULL": 2048000000000,
+          "weight_EMPTY": 0,
+          "survivor": "FULL",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 5,
+          "weight_FULL": 2048000000000,
+          "weight_EMPTY": 0,
+          "survivor": "FULL",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 6,
+          "weight_FULL": 2048000000000,
+          "weight_EMPTY": 0,
+          "survivor": "FULL",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 7,
+          "weight_FULL": 2048000000000,
+          "weight_EMPTY": 0,
+          "survivor": "FULL",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 8,
+          "weight_FULL": 2048000000000,
+          "weight_EMPTY": 0,
+          "survivor": "FULL",
+          "ptc_gate_open": false
+        }
+      ],
+      "persists": true
+    },
+    {
+      "scenario": "attack",
+      "should_build_on_full": false,
+      "selected_at_t_plus_1": "EMPTY",
+      "attesters_voted_present": false,
+      "after_window": [
+        {
+          "slot": 3,
+          "weight_FULL": 0,
+          "weight_EMPTY": 2048000000000,
+          "survivor": "EMPTY",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 4,
+          "weight_FULL": 0,
+          "weight_EMPTY": 2048000000000,
+          "survivor": "EMPTY",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 5,
+          "weight_FULL": 0,
+          "weight_EMPTY": 2048000000000,
+          "survivor": "EMPTY",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 6,
+          "weight_FULL": 0,
+          "weight_EMPTY": 2048000000000,
+          "survivor": "EMPTY",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 7,
+          "weight_FULL": 0,
+          "weight_EMPTY": 2048000000000,
+          "survivor": "EMPTY",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 8,
+          "weight_FULL": 0,
+          "weight_EMPTY": 2048000000000,
+          "survivor": "EMPTY",
+          "ptc_gate_open": false
+        }
+      ],
+      "persists": true
+    },
+    {
+      "scenario": "attack_rescue",
+      "should_build_on_full": false,
+      "selected_at_t_plus_1": "EMPTY",
+      "attesters_voted_present": true,
+      "after_window": [
+        {
+          "slot": 3,
+          "weight_FULL": 2048000000000,
+          "weight_EMPTY": 0,
+          "survivor": "FULL",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 4,
+          "weight_FULL": 2048000000000,
+          "weight_EMPTY": 0,
+          "survivor": "FULL",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 5,
+          "weight_FULL": 2048000000000,
+          "weight_EMPTY": 0,
+          "survivor": "FULL",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 6,
+          "weight_FULL": 2048000000000,
+          "weight_EMPTY": 0,
+          "survivor": "FULL",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 7,
+          "weight_FULL": 2048000000000,
+          "weight_EMPTY": 0,
+          "survivor": "FULL",
+          "ptc_gate_open": false
+        },
+        {
+          "slot": 8,
+          "weight_FULL": 2048000000000,
+          "weight_EMPTY": 0,
+          "survivor": "FULL",
+          "ptc_gate_open": false
+        }
+      ],
+      "persists": false
+    }
+  ],
+  "follow_fraction_sweep": [
+    {
+      "follow_fraction": 0.0,
+      "n_follow": 0,
+      "weight_FULL": 2048000000000,
+      "weight_EMPTY": 0,
+      "survivor": "FULL"
+    },
+    {
+      "follow_fraction": 0.25,
+      "n_follow": 16,
+      "weight_FULL": 1536000000000,
+      "weight_EMPTY": 512000000000,
+      "survivor": "FULL"
+    },
+    {
+      "follow_fraction": 0.4,
+      "n_follow": 26,
+      "weight_FULL": 1216000000000,
+      "weight_EMPTY": 832000000000,
+      "survivor": "FULL"
+    },
+    {
+      "follow_fraction": 0.5,
+      "n_follow": 32,
+      "weight_FULL": 1024000000000,
+      "weight_EMPTY": 1024000000000,
+      "survivor": "TIE"
+    },
+    {
+      "follow_fraction": 0.51,
+      "n_follow": 33,
+      "weight_FULL": 992000000000,
+      "weight_EMPTY": 1056000000000,
+      "survivor": "EMPTY"
+    },
+    {
+      "follow_fraction": 0.6,
+      "n_follow": 38,
+      "weight_FULL": 832000000000,
+      "weight_EMPTY": 1216000000000,
+      "survivor": "EMPTY"
+    },
+    {
+      "follow_fraction": 0.75,
+      "n_follow": 48,
+      "weight_FULL": 512000000000,
+      "weight_EMPTY": 1536000000000,
+      "survivor": "EMPTY"
+    },
+    {
+      "follow_fraction": 1.0,
+      "n_follow": 64,
+      "weight_FULL": 0,
+      "weight_EMPTY": 2048000000000,
+      "survivor": "EMPTY"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "schema": "exp88-v2",
+  "source": "8-relay mainnet block auction panel (cross-relay max top_bid_eth)",
+  "panel_path": "/Volumes/sun/GitHub/epbs-two-gates-artifact/experiments/data/block_value_panel_24000000_24499999_min.parquet",
+  "window_blocks": "24000000-24499999",
+  "n": 493330,
+  "median_eth": 0.011836585782981331,
+  "mean_eth": 0.03932862413609412,
+  "top20_value_share": 0.7654248240229498,
+  "pivotal_members": 257,
+  "protocol_direct_penalty_eth": 0.0,
+  "reservation_price_model": "exogenous_per_seat",
+  "per_seat_prices_eth": [
+    0.0,
+    1e-05,
+    0.0001,
+    0.001,
+    0.01,
+    0.1
+  ],
+  "panel_wide_rows": [
+    {
+      "per_seat_reservation_price_eth": 0.0,
+      "total_reservation_cost_eth": 0.0,
+      "break_even_eth": 0.0,
+      "empirical_frac_blocks": 1.0,
+      "empirical_frac_value": 1.0
+    },
+    {
+      "per_seat_reservation_price_eth": 1e-05,
+      "total_reservation_cost_eth": 0.00257,
+      "break_even_eth": 0.00257,
+      "empirical_frac_blocks": 0.9994425638011067,
+      "empirical_frac_value": 0.9999755204151114
+    },
+    {
+      "per_seat_reservation_price_eth": 0.0001,
+      "total_reservation_cost_eth": 0.0257,
+      "break_even_eth": 0.0257,
+      "empirical_frac_blocks": 0.21467982891776297,
+      "empirical_frac_value": 0.775318224979275
+    },
+    {
+      "per_seat_reservation_price_eth": 0.001,
+      "total_reservation_cost_eth": 0.257,
+      "break_even_eth": 0.257,
+      "empirical_frac_blocks": 0.012182514746721261,
+      "empirical_frac_value": 0.4662041111488756
+    },
+    {
+      "per_seat_reservation_price_eth": 0.01,
+      "total_reservation_cost_eth": 2.57,
+      "break_even_eth": 2.57,
+      "empirical_frac_blocks": 0.001092574949830742,
+      "empirical_frac_value": 0.2884289083087377
+    },
+    {
+      "per_seat_reservation_price_eth": 0.1,
+      "total_reservation_cost_eth": 25.7,
+      "break_even_eth": 25.7,
+      "empirical_frac_blocks": 6.891938459043642e-05,
+      "empirical_frac_value": 0.10147226261732638
+    }
+  ],
+  "decile_summary": [
+    {
+      "gap_decile": 1,
+      "n_blocks": 49333,
+      "gap_mean": 0.10540373036569213,
+      "top_bid_mean": 0.04747485116704213,
+      "top_bid_median": 0.008925683660138508,
+      "value_share_of_panel": 0.12071322658722695
+    },
+    {
+      "gap_decile": 2,
+      "n_blocks": 49333,
+      "gap_mean": 0.33111310714954045,
+      "top_bid_mean": 0.029815083045793167,
+      "top_bid_median": 0.011930114995432136,
+      "value_share_of_panel": 0.07581013498621267
+    },
+    {
+      "gap_decile": 3,
+      "n_blocks": 49346,
+      "gap_mean": 0.41303674961958475,
+      "top_bid_mean": 0.027498893809895893,
+      "top_bid_median": 0.011920797799084552,
+      "value_share_of_panel": 0.06993923838728837
+    },
+    {
+      "gap_decile": 4,
+      "n_blocks": 49357,
+      "gap_mean": 0.4617002286897958,
+      "top_bid_mean": 0.02554585331899701,
+      "top_bid_median": 0.01187572980372202,
+      "value_share_of_panel": 0.06498646132890719
+    },
+    {
+      "gap_decile": 5,
+      "n_blocks": 49460,
+      "gap_mean": 0.499989091499048,
+      "top_bid_mean": 0.02671231602564676,
+      "top_bid_median": 0.011880477427587932,
+      "value_share_of_panel": 0.06809565105180347
+    },
+    {
+      "gap_decile": 6,
+      "n_blocks": 49189,
+      "gap_mean": 0.533708991527643,
+      "top_bid_mean": 0.02628900630015617,
+      "top_bid_median": 0.01193340601846992,
+      "value_share_of_panel": 0.06664934479557373
+    },
+    {
+      "gap_decile": 7,
+      "n_blocks": 49320,
+      "gap_mean": 0.5668950647137289,
+      "top_bid_mean": 0.029579758201967732,
+      "top_bid_median": 0.012081163719111374,
+      "value_share_of_panel": 0.0751919603924007
+    },
+    {
+      "gap_decile": 8,
+      "n_blocks": 49348,
+      "gap_mean": 0.602723231021322,
+      "top_bid_mean": 0.027830594368218615,
+      "top_bid_median": 0.01215112563031046,
+      "value_share_of_panel": 0.07078573695866877
+    },
+    {
+      "gap_decile": 9,
+      "n_blocks": 49349,
+      "gap_mean": 0.647274188453595,
+      "top_bid_mean": 0.03169047010311214,
+      "top_bid_median": 0.01242119836954189,
+      "value_share_of_panel": 0.08060477288288512
+    },
+    {
+      "gap_decile": 10,
+      "n_blocks": 49295,
+      "gap_mean": 0.7447678804759085,
+      "top_bid_mean": 0.12091990644648325,
+      "top_bid_median": 0.015064781779410048,
+      "value_share_of_panel": 0.30722347262903266
+    }
+  ],
+  "attackable_value_concentration": [
+    {
+      "per_seat_reservation_price_eth": 0.0,
+      "total_reservation_cost_eth": 0.0,
+      "break_even_eth": 0.0,
+      "attackable_value_share_top_gap_decile": 0.30722347262903277,
+      "attackable_value_share_top3_gap_deciles": 0.45861398247058677
+    },
+    {
+      "per_seat_reservation_price_eth": 1e-05,
+      "total_reservation_cost_eth": 0.00257,
+      "break_even_eth": 0.00257,
+      "attackable_value_share_top_gap_decile": 0.3072294913949121,
+      "attackable_value_share_top3_gap_deciles": 0.45861899970985126
+    },
+    {
+      "per_seat_reservation_price_eth": 0.0001,
+      "total_reservation_cost_eth": 0.0257,
+      "break_even_eth": 0.0257,
+      "attackable_value_share_top_gap_decile": 0.3701042127044062,
+      "attackable_value_share_top3_gap_deciles": 0.5067185963046337
+    },
+    {
+      "per_seat_reservation_price_eth": 0.001,
+      "total_reservation_cost_eth": 0.257,
+      "break_even_eth": 0.257,
+      "attackable_value_share_top_gap_decile": 0.5062737155133209,
+      "attackable_value_share_top3_gap_deciles": 0.5988670690816355
+    },
+    {
+      "per_seat_reservation_price_eth": 0.01,
+      "total_reservation_cost_eth": 2.57,
+      "break_even_eth": 2.57,
+      "attackable_value_share_top_gap_decile": 0.5485810910716945,
+      "attackable_value_share_top3_gap_deciles": 0.6170084054328426
+    },
+    {
+      "per_seat_reservation_price_eth": 0.1,
+      "total_reservation_cost_eth": 25.7,
+      "break_even_eth": 25.7,
+      "attackable_value_share_top_gap_decile": 0.4273497834159019,
+      "attackable_value_share_top3_gap_deciles": 0.4521778388638716
+    }
+  ]
+}

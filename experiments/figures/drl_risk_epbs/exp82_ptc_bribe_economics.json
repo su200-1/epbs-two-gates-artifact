@@ -1,0 +1,83 @@
+{
+  "schema": "exp82-v3",
+  "ptc_size": 512,
+  "payload_timely_threshold": 256,
+  "pivotal_members": 257,
+  "protocol_direct_penalty_eth": 0.0,
+  "reservation_price_model": "exogenous_per_seat",
+  "per_seat_prices_eth": [
+    0.0,
+    1e-05,
+    0.0001,
+    0.001,
+    0.01,
+    0.1
+  ],
+  "mev_median_eth": 0.05,
+  "mev_sigma": 1.27,
+  "rows": [
+    {
+      "per_seat_reservation_price_eth": 0.0,
+      "per_seat_reservation_price_gwei": 0.0,
+      "pivotal_members": 257,
+      "total_reservation_cost_eth": 0.0,
+      "total_reservation_cost_gwei": 0.0,
+      "breakeven_mev_eth": 0.0,
+      "frac_blocks_profitable": 1.0
+    },
+    {
+      "per_seat_reservation_price_eth": 1e-05,
+      "per_seat_reservation_price_gwei": 10000.0,
+      "pivotal_members": 257,
+      "total_reservation_cost_eth": 0.00257,
+      "total_reservation_cost_gwei": 2570000.0,
+      "breakeven_mev_eth": 0.00257,
+      "frac_blocks_profitable": 0.9902830096684011
+    },
+    {
+      "per_seat_reservation_price_eth": 0.0001,
+      "per_seat_reservation_price_gwei": 100000.0,
+      "pivotal_members": 257,
+      "total_reservation_cost_eth": 0.0257,
+      "total_reservation_cost_gwei": 25700000.0,
+      "breakeven_mev_eth": 0.0257,
+      "frac_blocks_profitable": 0.6998749728418782
+    },
+    {
+      "per_seat_reservation_price_eth": 0.001,
+      "per_seat_reservation_price_gwei": 1000000.0,
+      "pivotal_members": 257,
+      "total_reservation_cost_eth": 0.257,
+      "total_reservation_cost_gwei": 257000000.0,
+      "breakeven_mev_eth": 0.257,
+      "frac_blocks_profitable": 0.09869588441519395
+    },
+    {
+      "per_seat_reservation_price_eth": 0.01,
+      "per_seat_reservation_price_gwei": 10000000.0,
+      "pivotal_members": 257,
+      "total_reservation_cost_eth": 2.57,
+      "total_reservation_cost_gwei": 2570000000.0,
+      "breakeven_mev_eth": 2.57,
+      "frac_blocks_profitable": 0.0009608388544788404
+    },
+    {
+      "per_seat_reservation_price_eth": 0.1,
+      "per_seat_reservation_price_gwei": 100000000.0,
+      "pivotal_members": 257,
+      "total_reservation_cost_eth": 25.7,
+      "total_reservation_cost_gwei": 25700000000.0,
+      "breakeven_mev_eth": 25.7,
+      "frac_blocks_profitable": 4.436032696730763e-07
+    }
+  ],
+  "caveats": [
+    "zero per-seat price is a protocol-implied direct-cost lower bound, not an observed market price",
+    "the specification does not determine operators' reservation prices",
+    "reservation prices may reflect coordination, reputation, legal exposure, counter-bribes, and pivotal-seat holdout power",
+    "captured MEV <= block value (re-capture fraction not yet modeled in-sim)",
+    "assumes attacker can identify+recruit RANDAO-sampled PTC members ahead of slot",
+    "block-value distribution is illustrative; flag for RelayScan/mevboost.pics calibration",
+    "a validly signed not-present PTC vote triggers no direct penalty, balance deduction, or slashing under the audited specification"
+  ]
+}
