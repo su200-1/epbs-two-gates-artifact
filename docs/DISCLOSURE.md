@@ -2,16 +2,20 @@
 
 | | |
 |---|---|
-| **Status** | **DRAFT — not yet sent.** |
-| Intended venue | `ethereum/consensus-specs` issue, cross-posted as a reply to ethresear.ch topic 16054 |
-| Date sent | *(fill in when posted)* |
-| Link | *(fill in when posted)* |
-| Response | *(fill in when received)* |
+| **Status** | **Reported; awaiting response.** |
+| Venue | `ethereum/consensus-specs` issue #5516 |
+| Date sent | 2026-08-05 |
+| Link | https://github.com/ethereum/consensus-specs/issues/5516 |
+| Response | *none as of 2026-08-05* |
+| Cross-post | *pending — ethresear.ch topic 16054* |
 
-Nothing here has been communicated to the specification authors yet. Do not read this
-file as a record that a disclosure took place; update the table above when it does.
+Reported to the specification authors before the paper was submitted. The text below is
+the full write-up the issue links to; the shorter text actually posted as the issue is
+reproduced at the end of this file. Both are given unchanged.
 
-The text below is what we intend to send.
+Update the `Response` row when a reply arrives, including an unfavourable one — a reply
+confirming that the behaviour is a known and deliberate trade-off is itself a useful
+result and is reported as such.
 
 ---
 
@@ -244,10 +248,11 @@ and we will move it.
 
 # Companion: `ethereum/consensus-specs` issue
 
-The write-up above is the full account. The repository issue below is a short version
-built around what holds in the specification as it stands today, and links back here for
-the rest. Everything in it is present-tense: it makes no assumption about future
-parameter choices.
+Posted as [ethereum/consensus-specs#5516](https://github.com/ethereum/consensus-specs/issues/5516)
+on 2026-08-05, reproduced here verbatim. It is a short version built around what holds
+in the specification as it stands today, linking back to this file for the rest;
+everything in it is present-tense and assumes nothing about future parameter choices.
+Line numbers are for `master` @ `46d3d3513`.
 
 **Title**
 
@@ -306,9 +311,5 @@ mitigation for PTC equivocation; at `N = 512` that would raise the first cost fr
 to 342 and lower the second from 256 to 171. We raise this only as a property of the
 parameterisation, not as a claim that such a change is planned.
 
-Full write-up, threat model, and a runnable script: <write-up link>
+Full write-up, threat model, and a runnable script: <[epbs-two-gates](https://github.com/su200-1/epbs-two-gates-artifact/blob/main/docs/DISCLOSURE.md)>
 ```
-
-**Before posting**, replace `<write-up link>` with the URL of this file, and re-check the
-line numbers: they are for `master` @ `46d3d3513`, and upstream moved these functions by
-one line in the 80 commits preceding it.
