@@ -2,20 +2,28 @@
 
 | | |
 |---|---|
-| **Status** | **Reported; awaiting response.** |
+| **Status** | **Reported; answered.** |
 | Venue | `ethereum/consensus-specs` issue #5516 |
 | Date sent | 2026-08-05 |
 | Link | https://github.com/ethereum/consensus-specs/issues/5516 |
-| Response | *none as of 2026-08-05* |
+| Response | 2026-08-05, `potuz` (maintainer; EIP-7732 co-author): *"This is a deliberate tradeoff, this issue should be closed."* |
+| Follow-up | 2026-08-05, ours: asked whether "deliberate" also covers the evidentiary asymmetry (that denying the affirmation requires no signed object). Unanswered as of this writing. |
 | Cross-post | *pending — ethresear.ch topic 16054* |
 
 Reported to the specification authors before the paper was submitted. The text below is
 the full write-up the issue links to; the shorter text actually posted as the issue is
 reproduced at the end of this file. Both are given unchanged.
 
-Update the `Response` row when a reply arrives, including an unfavourable one — a reply
-confirming that the behaviour is a known and deliberate trade-off is itself a useful
-result and is reported as such.
+**Reading the response.** The reply disputes no part of the mechanism — not the predicate
+reading, not the seat counts, not the line references. It states that the behaviour is a
+deliberate trade-off, which is what this work assumes throughout: EIP-7732's rationale
+says the omission of PTC penalties was chosen for "simplicity of implementation," and
+unconditional settlement is documented as closing the builder free option. The paper
+prices a deliberate choice rather than reporting a defect, and the reply is consistent
+with that framing. What the reply does not address is whether the *consequence* the issue
+asked about --- that because an absent seat counts for neither side, the denial direction
+produces no object a vote-accountability rule could adjudicate --- was itself weighed.
+That question is the subject of the follow-up above.
 
 ---
 

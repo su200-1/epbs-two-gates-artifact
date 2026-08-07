@@ -31,8 +31,9 @@ import pandas as pd
 
 DATA = Path(__file__).resolve().parent / "data"
 FIG = Path(__file__).resolve().parent / "figures" / "drl_risk_epbs"
-NEW_PANEL = DATA / "block_value_panel_fresh_2026H1.parquet"
-OLD_PANEL = DATA / "block_value_panel_24000000_24499999_min.parquet"
+NEW_PANEL = DATA / "block_value_panel_delivered_2026H1.parquet"
+# The earlier top-bid panel this script used to compare against has been
+# retired; the delivered panel is the only one the paper uses.
 
 plt.rcParams.update({
     "figure.dpi": 150, "savefig.dpi": 200,

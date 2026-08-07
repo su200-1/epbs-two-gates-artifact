@@ -14,7 +14,7 @@ MILLIS_PER_SLOT: int = SECONDS_PER_SLOT * 1000
 
 # Basis-point fractions of a slot. Values pinned to consensus-specs gloas
 # (eth_consensus_specs.gloas.mainnet config). 10_000 BPS == one full slot.
-PAYLOAD_DUE_BPS: int = 7_500              # builder payload-reveal deadline
+PAYLOAD_DUE_BPS: int = 5_000              # builder payload-reveal deadline
 PAYLOAD_ATTESTATION_DUE_BPS: int = 7_500  # PTC attestation deadline
 ATTESTATION_DUE_BPS_GLOAS: int = 2_500    # regular beacon attestation deadline
 

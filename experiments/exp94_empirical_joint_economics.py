@@ -1,3 +1,9 @@
+"""RETIRED -- retired: ran on the top-bid panel, which is no longer distributed, and backs
+no claim in the paper.
+
+Kept for provenance; not part of the reproduction path.
+"""
+
 """Empirical block-value x recruitment-cost x recapture-ratio sensitivity.
 
 Crosses attacker-owned PTC seat share, exogenous per-seat reservation price, and

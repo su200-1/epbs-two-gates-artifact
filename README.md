@@ -4,7 +4,7 @@ Artifact for *Two Fixed-Seat Paths to Payload Orphaning in ePBS*. The manuscript
 not distributed here while it is under review; the accepted version will be linked
 once it is available.
 
-The paper reports a specification-level incentive flaw in Ethereum's enshrined
+The paper prices a specification-level design trade-off in Ethereum's enshrined
 Proposer-Builder Separation (ePBS, EIP-7732 / `gloas`): the builder-payment predicate
 never reads the Payload Timeliness Committee's (PTC) vote, and the payload-timeliness
 predicate never reads the payment. That decoupling admits two routes to discarding a
@@ -24,9 +24,9 @@ bash experiments/reproduce_paper3.sh
 ```
 
 The whole run takes about two minutes — the differential suite is a few seconds
-once the pyspec is built — except `exp96` (fresh-panel rebuild from raw
-relay/on-chain archives, optional, see below). Every headline result is written to
-`experiments/figures/drl_risk_epbs/`.
+once the pyspec is built — except `exp103` (re-fetching the delivered-payload
+shards, ~85 min, optional: the panel it feeds is bundled). Every headline result is
+written to `experiments/figures/drl_risk_epbs/`.
 
 ## What maps to what
 
@@ -35,25 +35,29 @@ section is listed with the command that reproduces it and the numbers to expect.
 
 | Paper element | Command |
 |---|---|
-| Exact two-gate boundary (Table 2) | `python experiments/exp92_exact_ptc_payment_boundary.py` |
-| Scaled end-to-end sanity check (Table 3) | `python experiments/exp81_ptc_orphan_probe.py --seeds 8 --slots 64` |
-| Operator supply vs. the pivotal set (Table 4) | `python experiments/exp95_empirical_operator_concentration.py` |
-| Reservation-price sensitivity (Table 5) | `python experiments/exp88_gap_conditioned_block_value.py` |
-| Joint economic sensitivity (Table 6) | `python experiments/exp94_empirical_joint_economics.py` |
-| Mitigation stress test (Table 7) | `python experiments/exp86_mitigation_eval.py` |
-| On-chain-verified panel build (817,528 blocks) | `python experiments/exp96_fresh_panel_build.py` (optional — output bundled) |
-| Block-value distribution + reproducibility figure | `python experiments/exp97_block_value_distribution.py` |
-| Break-even frontier figure | `python experiments/exp98_breakeven_frontier.py` |
-| Temporal stability figure | `python experiments/exp99_temporal_stability.py` |
-| Robustness figure (combined) | `python experiments/exp100_robustness_combined.py` |
-| Mutation audit of the differential suite | `python experiments/exp101_mutation_audit.py` |
-| Orphan persistence past the boost window | `python experiments/exp102_orphan_persistence.py` |
-| Spec-faithfulness audit | `python -m pytest difftest/ -q` |
+| Exact two-gate boundary (Table `tab:boundary`) | `python experiments/exp92_exact_ptc_payment_boundary.py` |
+| Scaled end-to-end sanity check (§2, orphan-and-still-pay) | `python experiments/exp81_ptc_orphan_probe.py --seeds 8 --slots 64` |
+| Orphan persistence past the boost window (§2.5) | `python experiments/exp102_orphan_persistence.py` |
+| Non-participation asymmetry (Table `tab:participation`) | — analytic; no experiment |
+| Operator shares behind §3.1's 37.2 % / 7.45 % | `python experiments/exp95_empirical_operator_concentration.py` |
+| Block-value distribution (Figure `fig:valuedist`) | `python experiments/exp97_block_value_distribution.py` |
+| Break-even frontier (Figure `fig:breakeven`) | `python experiments/exp98_breakeven_frontier.py` |
+| Temporal stability (Figure `fig:robust`) | `python experiments/exp99_temporal_stability.py` |
+| Mitigation stress test (Table `tab:mit`) | `python experiments/exp86_mitigation_eval.py` |
+| Mutation audit (Table `tab:mutation`) | `python experiments/exp101_mutation_audit.py` |
+| Spec-faithfulness audit (§4) | `python -m pytest difftest/ -q` |
+| Delivered-payload panel build (935,315 blocks) | `python experiments/exp103_fetch_delivered_payloads.py && python experiments/exp104_build_delivered_panel.py` (optional — panel bundled) |
 
-`exp84` and `exp85` are retained for provenance only; `exp93` is superseded by `exp95`
-(measured node-operator shares rather than invented profiles). The manuscript reports
-no learned deployment policy; none of `exp84`/`exp85`/`exp93` back a table or claim in
-the paper.
+Floats are keyed by LaTeX label rather than by number, because the numbering shifts as the
+manuscript is revised.
+
+Retained but **not cited by the paper**: `exp82`, `exp83`, `exp84`, `exp85`, `exp87`,
+`exp93`. Kept for provenance — `exp93` is superseded by `exp95` (measured node-operator
+shares rather than invented profiles), and the manuscript reports no learned deployment
+policy, so nothing in `exp84`/`exp85` backs a claim.
+
+**Retired**, marked as such in their own docstrings and no longer runnable because the
+panels they read are no longer distributed: `exp88`, `exp94`, `exp96`, `exp100`.
 
 ## Layout
 
@@ -61,7 +65,7 @@ the paper.
 config.py                     protocol constants (PTC_SIZE, thresholds, ...)
 epbs/                         spec-anchored simulator port
 experiments/                  experiments cited by the paper
-  data/                       bundled block-value panels (~25 MB, two vintages)
+  data/                       bundled delivered-payload panel (72 MB)
   figures/drl_risk_epbs/      generated results (JSON/CSV tracked; PNG/PDF regenerated)
   reproduce_paper3.sh         one-shot reproduction
 difftest/                     differential tests for the load-bearing predicates
@@ -72,13 +76,13 @@ docs/DISCLOSURE.md            responsible-disclosure record
 ## Differential tests against the executable specification
 
 The conformance layer compares this port against the executable `pyspec` generated from
-`consensus-specs` at the audited snapshot `015d72704fea321e95bb74631e34be17e1104e86`
-(2026-07-02), the commit the paper quotes line numbers from. Build it once and point the
+`consensus-specs` at the audited snapshot `5366cb59e`
+(2026-08-05), the commit the paper quotes line numbers from. Build it once and point the
 tests at it:
 
 ```bash
 git clone https://github.com/ethereum/consensus-specs
-cd consensus-specs && git checkout 015d72704fea321e95bb74631e34be17e1104e86
+cd consensus-specs && git checkout 5366cb59e
 pip install uv && make _pyspec
 export EPBS_PYSPEC_DIR=$PWD/tests/core/pyspec
 ```
@@ -104,14 +108,13 @@ self-skips and the simulator-internal tests still run.
 
 ### Running against a newer consensus-specs
 
-The suite also runs against `master`. Checked at `46d3d3513` (2026-08-05, 80 commits
-past the audited snapshot): **291 passed, 2 failed**, and both failures are the same
+The suite also runs against `master`. Checked at `015d72704` (2026-07-02, the previous pin): **291 passed, 2 failed**, and both failures are the same
 genuine drift rather than a portability problem —
 
 - `test_payload_due_bps_matches_spec` / `test_payload_due_ms_matches_spec`:
   `PAYLOAD_DUE_BPS` moved from `7500` to `5000` upstream (#5414, the builder's reveal
-  deadline moved from 9 s to 6 s into the slot). `config.py` is pinned to the audited
-  snapshot, so these assertions are the drift detector doing its job. Nothing the paper
+  deadline moved from 9 s to 6 s into the slot). `config.py` now tracks the current
+  value, so running against the older snapshot trips the drift detector instead. Nothing the paper
   claims depends on this constant: the PTC attestation deadline (`7500`) and the regular
   attestation deadline (`2500`) are unchanged.
 
@@ -123,23 +126,36 @@ snapshot.
 
 ## Data provenance
 
-Two block-value panels are bundled under `experiments/data/`, so nothing here needs an
-external download:
+One panel is bundled under `experiments/data/`, so nothing here needs an external
+download:
 
-- `block_value_panel_fresh_2026H1.parquet` (817,528 blocks, 2026-02-21–2026-07-10):
-  the calibration panel for the manuscript's main text (Figures~valuedist/breakeven/
-  robust). Built by `exp96` from eight relays' top-bid archives via RelayScan,
-  cross-referenced against on-chain coinbases from XBlock-ETH — a block's bid counts
-  only if `block_fee_recipient` matches the on-chain coinbase, i.e. only bids that
-  actually landed.
-- `block_value_panel_24000000_24499999_min.parquet` (493,330 blocks, block heights
-  24,000,000–24,499,999): the earlier eight-relay sample, still used by `exp88`'s
-  reservation-price sensitivity table.
+- `block_value_panel_delivered_2026H1.parquet` — **935,315 blocks**, 2026-02-21 to
+  2026-07-10 (UTC), the calibration panel for Figures `valuedist` / `breakeven` /
+  `robust`. Each row is a payload a relay reports having delivered, carrying the block
+  hash and the value the builder paid.
 
-Both derive from the public `builder_blocks_received` relay archives via RelayScan,
-with on-chain block fields from XBlock-ETH (Zheng, Zheng, Wu and Dai,
-*IEEE Open Journal of the Computer Society* 1 (2020) 95–106,
-[doi:10.1109/OJCS.2020.2990458](https://doi.org/10.1109/OJCS.2020.2990458)).
+Built by `exp103` (fetch) and `exp104` (merge, adjudicate, verify) from the eight relays'
+`proposer_payload_delivered` endpoints. Delivery shares: Ultra Sound 30.9%, bloXroute
+max-profit 24.3%, Titan 18.0%, Aestus 14.6%, bloXroute regulated 6.4%, Agnostic 2.2%,
+EthGas 1.8%, Flashbots 1.8%.
+
+Two independent checks, both reported by `exp104`:
+
+- **`parent_hash` chaining.** A block that lands becomes the `parent_hash` of the next
+  slot's bids, so the canonical hash of a slot can be recovered from the public RelayScan
+  bid archive alone. Over the 172,088 blocks where that reconstruction and the delivered
+  records overlap, block hashes agree on **100.0%** and values on 99.5%.
+- **Coinbase agreement** with on-chain block data from XBlock-ETH (Zheng, Zheng, Wu and
+  Dai, *IEEE Open Journal of the Computer Society* 1 (2020) 95–106,
+  [doi:10.1109/OJCS.2020.2990458](https://doi.org/10.1109/OJCS.2020.2990458)), for
+  930,109 of the 935,315 blocks.
+
+314 heights carry two delivered blocks at two different slots — reorganisations. 216 are
+adjudicated by the `parent_hash` reconstruction; the remaining 98 are dropped rather than
+guessed, since preferring the later slot agrees with the evidence only 77% of the time.
+
+The raw per-relay shards `exp103` writes are not distributed (467 MB); re-fetching them
+takes about 85 minutes.
 
 ## Scope
 

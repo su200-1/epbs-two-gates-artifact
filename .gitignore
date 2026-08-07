@@ -30,3 +30,8 @@ manuscript/
 *.out
 *.spl
 *.xdv
+
+# Raw per-relay delivered-payload shards fetched by exp103 (467 MB). The panel
+# exp104 derives from them is what the paper uses and is tracked; re-fetching the
+# shards takes about 85 minutes.
+experiments/data/delivered/

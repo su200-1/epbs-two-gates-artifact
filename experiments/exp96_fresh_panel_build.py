@@ -1,3 +1,9 @@
+"""RETIRED -- superseded by exp103/exp104: fee-recipient matching does not identify the
+delivered block.
+
+Kept for provenance; not part of the reproduction path.
+"""
+
 """Experiment 96 -- build a fresh, on-chain-verified block-value panel from the
 2026 H1 RelayScan top-bid archives.
 

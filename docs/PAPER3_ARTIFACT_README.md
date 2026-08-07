@@ -10,18 +10,18 @@ one command below and written to a tracked JSON under
 
 ## Snapshot
 
-- Repository branch: `codex/drl-incentive-attack-exploration`
-- Spec snapshot: `SPEC_SNAPSHOT.json`
-- Pinned `consensus-specs`: `ec1c01f5f10fb60636a022ae8944c912b6da35f8`
-  (`v1.7.0-alpha.10`, 2026-06-01). The load-bearing PTC/timeliness/payment functions
-  are unchanged across the full 73-commit range to the current spec HEAD `015d72704`
-  (2026-07-02), verified two ways: (i) source-level `git diff` of `payload_timeliness`,
-  `should_build_on_full`, `should_extend_payload`, `process_builder_pending_payments`,
-  and the same-slot payment-weight accrual — only a behavior-preserving `is`→`==` and a
-  semantically-equivalent branch reorder, with no new PTC slashing and no
+- Pinned `consensus-specs`: **`5366cb59e`** (2026-08-05) — the commit the manuscript
+  quotes line numbers from and the one `config.py` tracks.
+- The load-bearing PTC/timeliness/payment functions are unchanged across the 82-commit
+  range from the previous pin `015d72704` (2026-07-02) to this one, verified two ways:
+  (i) source-level `git diff` of `payload_timeliness`, `should_build_on_full`,
+  `should_extend_payload`, `process_builder_pending_payments` and the same-slot
+  payment-weight accrual — the only edits touching them are an explicit `slot` parameter
+  on `should_build_on_full` (#5497, every caller passing the value it previously computed
+  internally) and the SSZ scalar renames, with no new PTC slashing and no
   orphan-voids-payment coupling; and (ii) the executable differential suite re-run
-  against the pyspec generated at `015d72704`. The functions are inherited unchanged by
-  the successor heze / EIP-7805 fork.
+  against the pyspec generated at each. The functions are inherited unchanged by the
+  successor heze / EIP-7805 fork.
 
 ## Environment
 
@@ -30,8 +30,7 @@ PY=/opt/anaconda3/envs/pbs-gym/bin/python
 ```
 
 All experiments run in `pbs-gym` (imports `torch` for exp85). One-shot
-reproduction of the simulator headlines, plus exp88 when `PAPER1_PANEL` is set or
-one of the companion panel's documented default paths is available:
+reproduction of every headline result:
 
 ```bash
 bash experiments/reproduce_paper3.sh
@@ -126,6 +125,29 @@ Selective theft is profitable on the high-value calibration under a conservative
 protocol-derived validator losses.
 → `exp83_ptc_theft_recapture_highmev_s16_t64.json`.
 
+### Block-value panel (Figures `valuedist` / `breakeven` / `robust`)
+
+```bash
+$PY experiments/exp97_block_value_distribution.py
+$PY experiments/exp98_breakeven_frontier.py
+$PY experiments/exp99_temporal_stability.py
+```
+
+All three read `experiments/data/block_value_panel_delivered_2026H1.parquet`, which is
+bundled: **935,315 blocks**, 2026-02-21 to 2026-07-10 (UTC), median `0.0103`, mean
+`0.0284`, p99.9 `1.366`, max `568.43` ETH. Rebuilding it from scratch is optional:
+
+```bash
+$PY experiments/exp103_fetch_delivered_payloads.py   # ~85 min, 8 relays in parallel
+$PY experiments/exp104_build_delivered_panel.py      # merge, adjudicate, verify
+```
+
+`exp104` prints both cross-checks it runs: `parent_hash` chaining agrees with the
+delivered records on 100.0% of 172,088 overlapping block hashes (99.5% on values), and
+the builder fee recipient matches the on-chain coinbase for 930,109 of 935,315 blocks.
+It also reports the 314 reorganised heights, of which 216 are adjudicated by the
+chaining reconstruction and 98 dropped.
+
 ### §7 Spec-Faithfulness Audit
 
 ```bash
@@ -215,38 +237,13 @@ they hold `59.1%` of sampled value. These are ex-post distributional sensitiviti
 not evidence of pre-slot identification. Cached sample: `exp87_block_value_sample.json`;
 result: `exp87_empirical_block_value.json`.
 
-```bash
-$PY experiments/exp88_gap_conditioned_block_value.py \
-    --panel /path/to/block_auction_panel.parquet
-```
-
-Further upgrades exp87 from a single-relay 4.8k sample to an 8-relay,
-**493,330-block** auction panel (`block_auction_panel.parquet`;
-`top_bid_eth` = cross-relay max builder bid; median `0.0118`, mean `0.0393` ETH; top 20%
-of blocks hold `76.5%` of value). At `p_seat=0.0001 ETH`, `21.5%` of blocks clear
-the `0.0257 ETH` break-even and hold `77.5%` of panel value; at `p_seat=0.001 ETH`,
-`1.2%` clear the `0.257 ETH` break-even and hold `46.6%` of panel value.
-The script retains a visibility-gap-decile breakdown as an auxiliary descriptive
-stratification only. The gap is contemporaneous and the analysis does not provide or
-validate a pre-slot predictor, so it is not used as evidence that an attacker can
-identify profitable slots within the decision window. This experiment does not re-run
-the simulator; only the value distribution feeding the break-even changes.
-Outputs: `exp88_gap_conditioned_block_value.json`, `exp88_gap_decile_summary.csv`,
-`exp88_gap_decile_profit.csv`, `exp88_attackable_value_concentration.csv`,
-`exp88_gap_conditioned_block_value.png`.
-
-```bash
-$PY experiments/exp94_empirical_joint_economics.py
-```
-
-Crosses attacker-owned PTC seat share (`0 / 10 / 20 / 33.3 %`), exogenous per-seat
-reservation price, and re-capture ratio `rho` against the same bundled panel.  At
-`0.001 ETH/seat` and zero pre-owned seats the marginal recruitment is `257` seats
-(`0.257 ETH`) and `1.22%` of panel blocks clear at `rho=1.00`, falling to `0.28%` at
-`rho=0.25`; a `33.3%` pre-owned share cuts the marginal recruitment to `86.3` seats
-(`0.086 ETH`) and raises coverage to `4.79%` / `0.87%`.  These are ex-post panel
-coverage figures, not a deployable targeting result or realized attack profit.
-Output: `exp94_empirical_joint_economics.json` and `.md`.
+> **Retired.** `exp88`, `exp94`, `exp96` and `exp100` read the earlier top-bid panels,
+> which are no longer distributed: matching a bid's `block_fee_recipient` against the
+> on-chain coinbase and taking the maximum does not identify the delivered block, since
+> one slot's candidate bids share a fee recipient but carry different block hashes. The
+> paper's value side now comes from the relays' own `proposer_payload_delivered` records
+> (`exp103` + `exp104`). The scripts are kept for provenance and marked retired in their
+> own docstrings; they back no claim in the manuscript.
 
 ### §Feasibility (PTC operator concentration)
 

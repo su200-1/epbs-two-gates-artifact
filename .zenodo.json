@@ -1,7 +1,7 @@
 {
-  "title": "Artifact for \"The Two Gates of ePBS: A Fixed-Seat Payload-Timeliness Orphaning and Builder-Griefing Surface\"",
+  "title": "Artifact for \"Two Fixed-Seat Paths to Payload Orphaning in ePBS\"",
   "upload_type": "software",
-  "description": "<p>Reproducibility artifact for the paper. Contains a spec-anchored simulator port of the Ethereum ePBS (EIP-7732 / gloas) payment, settlement, payload-timeliness and fork-choice paths; the experiments cited by the paper (exp81-exp88, exp92-exp94); differential/conformance tests against the executable pyspec for the load-bearing predicates; and a bundled 493,330-block, eight-relay block-value extract so the economic tables reproduce with no external download.</p><p>Entry point: <code>docs/PAPER3_ARTIFACT_README.md</code> maps each paper section to its command. <code>bash experiments/reproduce_paper3.sh</code> regenerates every headline result in one invocation.</p><p>Pinned consensus-specs snapshot: ec1c01f5f10fb60636a022ae8944c912b6da35f8.</p>",
+  "description": "<p>Reproducibility artifact for the paper. Contains a spec-anchored simulator port of the Ethereum ePBS (EIP-7732 / gloas) payment, settlement, payload-timeliness and fork-choice paths; the experiments cited by the paper; a 293-test differential suite against the executable pyspec, 206 of whose tests execute the generated gloas spec and which sweeps the 0-512 seat count exhaustively to pin the 257/256 boundary; and a bundled 935,315-block panel of MEV-Boost delivered payloads (2026-02-21 to 2026-07-10) built from the eight relays' proposer_payload_delivered records and cross-checked two independent ways, so the economic figures reproduce with no external download.</p><p>Entry point: <code>docs/PAPER3_ARTIFACT_README.md</code> maps each claim to the command that reproduces it. <code>bash experiments/reproduce_paper3.sh</code> regenerates every headline result in one invocation. <code>docs/DISCLOSURE.md</code> records the report made to the specification authors (ethereum/consensus-specs issue #5516) and the response.</p><p>Pinned consensus-specs snapshot: 5366cb59e (2026-08-05).</p>",
   "creators": [
     {
       "name": "FILL IN: Family, Given",
@@ -19,13 +19,20 @@
     "payload timeliness committee",
     "MEV",
     "consensus security",
-    "reproducibility artifact"
+    "reproducibility artifact",
+    "responsible disclosure",
+    "differential testing"
   ],
   "related_identifiers": [
     {
       "relation": "isSupplementTo",
       "identifier": "FILL IN AFTER ACCEPTANCE: paper DOI",
       "resource_type": "publication-article"
+    },
+    {
+      "relation": "references",
+      "identifier": "https://github.com/ethereum/consensus-specs/issues/5516",
+      "resource_type": "other"
     }
   ],
   "notes": "Block-value data derived from the public builder_blocks_received relay archives via RelayScan, with on-chain block fields from XBlock-ETH (Zheng et al., IEEE OJ-CS 1 (2020) 95-106, doi:10.1109/OJCS.2020.2990458)."

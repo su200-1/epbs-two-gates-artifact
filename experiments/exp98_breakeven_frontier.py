@@ -27,7 +27,7 @@ import pandas as pd
 
 DATA = Path(__file__).resolve().parent / "data"
 FIG = Path(__file__).resolve().parent / "figures" / "drl_risk_epbs"
-PANEL = DATA / "block_value_panel_fresh_2026H1.parquet"
+PANEL = DATA / "block_value_panel_delivered_2026H1.parquet"
 
 PTC_SIZE = 512
 PIVOTAL = 257
