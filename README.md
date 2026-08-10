@@ -46,7 +46,7 @@ section is listed with the command that reproduces it and the numbers to expect.
 | Mitigation stress test (Table `tab:mit`) | `python experiments/exp86_mitigation_eval.py` |
 | Mutation audit (Table `tab:mutation`) | `python experiments/exp101_mutation_audit.py` |
 | Spec-faithfulness audit (§4) | `python -m pytest difftest/ -q` |
-| Delivered-payload panel build (935,315 blocks) | `python experiments/exp103_fetch_delivered_payloads.py && python experiments/exp104_build_delivered_panel.py` (optional — panel bundled) |
+| Delivered-payload panel build (935,314 blocks) | `python experiments/exp103_fetch_delivered_payloads.py && python experiments/exp104_build_delivered_panel.py` (optional — panel bundled) |
 
 Floats are keyed by LaTeX label rather than by number, because the numbering shifts as the
 manuscript is revised.
@@ -58,6 +58,7 @@ policy, so nothing in `exp84`/`exp85` backs a claim.
 
 **Retired**, marked as such in their own docstrings and no longer runnable because the
 panels they read are no longer distributed: `exp88`, `exp94`, `exp96`, `exp100`.
+They are excluded from `reproduce_paper3.sh` and exit with a missing-file error.
 
 ## Layout
 
@@ -129,7 +130,7 @@ snapshot.
 One panel is bundled under `experiments/data/`, so nothing here needs an external
 download:
 
-- `block_value_panel_delivered_2026H1.parquet` — **935,315 blocks**, 2026-02-21 to
+- `block_value_panel_delivered_2026H1.parquet` — **935,314 blocks**, 2026-02-21 to
   2026-07-10 (UTC), the calibration panel for Figures `valuedist` / `breakeven` /
   `robust`. Each row is a payload a relay reports having delivered, carrying the block
   hash and the value the builder paid.
@@ -145,10 +146,14 @@ Two independent checks, both reported by `exp104`:
   slot's bids, so the canonical hash of a slot can be recovered from the public RelayScan
   bid archive alone. Over the 172,088 blocks where that reconstruction and the delivered
   records overlap, block hashes agree on **100.0%** and values on 99.5%.
-- **Coinbase agreement** with on-chain block data from XBlock-ETH (Zheng, Zheng, Wu and
-  Dai, *IEEE Open Journal of the Computer Society* 1 (2020) 95–106,
-  [doi:10.1109/OJCS.2020.2990458](https://doi.org/10.1109/OJCS.2020.2990458)), for
-  930,109 of the 935,315 blocks.
+- **Builder coinbase.** Where the bid archive also carries the delivered block's hash,
+  its `block_fee_recipient` is the builder's coinbase for that block. Compared against
+  the on-chain miner address from XBlock-ETH (Zheng, Zheng, Wu and Dai, *IEEE Open
+  Journal of the Computer Society* 1 (2020) 95–106,
+  [doi:10.1109/OJCS.2020.2990458](https://doi.org/10.1109/OJCS.2020.2990458)), the two
+  agree on **99.995%** of the 145,509 blocks where both exist, with 8 mismatches. Note
+  that the delivered records carry `proposer_fee_recipient`, a different address, which
+  is why the comparison is routed through the archive rather than taken from them.
 
 314 heights carry two delivered blocks at two different slots — reorganisations. 216 are
 adjudicated by the `parent_hash` reconstruction; the remaining 98 are dropped rather than

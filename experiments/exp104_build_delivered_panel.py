@@ -48,6 +48,13 @@ XBLOCK_SHARDS = sorted(glob.glob(
 
 WEI = Decimal(10) ** 18
 FIRST_DAY, LAST_DAY = "2026-02-21", "2026-07-10"
+GENESIS = 1_606_824_023          # mainnet, 12 s slots
+
+
+def day_of(slot):
+    """UTC day of a slot. Checked against XBlock: slot 13,876,315 -> 1,773,339,803,
+    the timestamp it records for block 24,643,151."""
+    return pd.to_datetime(GENESIS + slot * 12, unit="s", utc=True).dt.strftime("%Y-%m-%d")
 
 
 def load_delivered() -> pd.DataFrame:
@@ -115,12 +122,19 @@ def canonical_from_parent_hash(day: str):
     The block that landed at slot s is the one whose hash is the parent_hash of
     slot s+1's bids. Coverage is partial because `_top.csv` keeps only each
     relay's best bid, and the delivered block is often not the best.
+
+    Also returns the archive's ``block_fee_recipient`` keyed by block hash. That
+    is the builder's coinbase for the block, and it is what cross-check 2 compares
+    against the on-chain miner address; the delivered records themselves carry only
+    ``proposer_fee_recipient``, which is a different address and must not be used
+    for that comparison.
     """
     path = RELAY_DIR / f"{day}_top.csv"
     if not path.exists():
-        return {}, {}
+        return {}, {}, {}
     d = pd.read_csv(path, dtype=str,
-                    usecols=["slot", "value", "block_hash", "parent_hash", "block_number"])
+                    usecols=["slot", "value", "block_hash", "parent_hash",
+                             "block_number", "block_fee_recipient"])
     d["slot"] = pd.to_numeric(d["slot"])
     par = d.groupby("slot").parent_hash.agg(
         lambda x: collections.Counter(x.dropna()).most_common(1)[0][0])
@@ -130,12 +144,23 @@ def canonical_from_parent_hash(day: str):
     out: dict[int, tuple[str, float]] = {}
     for bn, bh, v in zip(hit.block_number, hit.block_hash, hit.value):
         out[int(bn)] = (bh, float(Decimal(v) / WEI))
-    return out, canon
+    fee = {h: r.lower() for h, r in zip(d.block_hash, d.block_fee_recipient)
+           if isinstance(r, str)}
+    return out, canon, fee
 
 
 def main() -> None:
     print("delivered shards:")
     df = load_delivered()
+
+    # Enforce the stated window here rather than trusting the fetch bound: the
+    # slot a day starts at is off by one at the boundary, and a shard fetched with
+    # an earlier bound would otherwise leak a block from the preceding day.
+    df["day"] = day_of(df.slot)
+    before = len(df)
+    df = df[(df.day >= FIRST_DAY) & (df.day <= LAST_DAY)].reset_index(drop=True)
+    print(f"\nwindow {FIRST_DAY}..{LAST_DAY}: kept {len(df):,} of {before:,} "
+          f"delivered records")
 
     days = sorted(os.path.basename(p)[:10]
                   for p in glob.glob(str(RELAY_DIR / "*_top.csv")))
@@ -144,10 +169,12 @@ def main() -> None:
     print(f"\ncross-check 1: parent_hash chaining over {len(days)} days", flush=True)
     truth: dict[int, tuple[str, float]] = {}
     canon_by_slot: dict[int, str] = {}
+    fee_by_hash: dict[str, str] = {}
     for i, day in enumerate(days, 1):
-        t, c = canonical_from_parent_hash(day)
+        t, c, f = canonical_from_parent_hash(day)
         truth.update(t)
         canon_by_slot.update(c)
+        fee_by_hash.update(f)
         if i % 25 == 0:
             print(f"  {i}/{len(days)} days, {len(truth):,} verifiable blocks", flush=True)
 
@@ -166,23 +193,36 @@ def main() -> None:
           f"({agree_v / max(len(common), 1):.3%})")
 
     print("\ncross-check 2: builder fee recipient vs on-chain coinbase", flush=True)
-    cb: dict[int, str] = {}
+    # The builder's coinbase comes from the bid archive keyed by the delivered
+    # block hash, not from the delivered record: those carry
+    # `proposer_fee_recipient`, a different address entirely (it agrees with the
+    # on-chain miner on 12 of 930k rows, which is what a semantic mismatch looks
+    # like). Coverage is partial for the same reason as cross-check 1 -- `_top.csv`
+    # keeps only each relay's best bid.
+    df["builder_fee_recipient"] = df.block_hash.map(fee_by_hash)
+    linked = df.dropna(subset=["builder_fee_recipient"])[
+        ["block_number", "builder_fee_recipient"]]
+    want = pd.Index(linked.block_number.unique())
+    parts = []
     for shard in XBLOCK_SHARDS:
         for chunk in pd.read_csv(shard, usecols=["blockNumber", "minerAddress"],
                                  dtype={"blockNumber": "Int64", "minerAddress": "string"},
-                                 chunksize=500_000):
+                                 chunksize=1_000_000):
             chunk = chunk.dropna()
-            cb.update(zip(chunk.blockNumber.astype("int64"),
-                          chunk.minerAddress.str.lower()))
-    df["coinbase"] = df.block_number.map(cb)
-    have = df.dropna(subset=["coinbase"])
-    print(f"  blocks with on-chain truth: {len(have):,}/{len(df):,}")
+            chunk = chunk[chunk.blockNumber.isin(want)]
+            if len(chunk):
+                parts.append(pd.DataFrame({
+                    "block_number": chunk.blockNumber.astype("int64").to_numpy(),
+                    "coinbase": chunk.minerAddress.str.lower().to_numpy()}))
+    onchain = (pd.concat(parts, ignore_index=True).drop_duplicates("block_number")
+               if parts else pd.DataFrame(columns=["block_number", "coinbase"]))
+    both = linked.merge(onchain, on="block_number", how="inner")
+    agree = int((both.builder_fee_recipient == both.coinbase).sum())
+    print(f"  linked to a bid carrying the delivered hash: {len(linked):,}/{len(df):,}")
+    print(f"  of those, with an on-chain coinbase:         {len(both):,}")
+    print(f"  builder fee recipient agrees:                {agree:,}/{len(both):,} "
+          f"({agree / max(len(both), 1):.3%})   mismatches: {len(both) - agree:,}")
 
-    # UTC day, derived exactly from the slot: mainnet genesis 1606824023, 12 s slots.
-    # Checked against XBlock: slot 13,876,315 -> 1,773,339,803, the timestamp it
-    # records for block 24,643,151.
-    df["day"] = pd.to_datetime(1_606_824_023 + df.slot * 12, unit="s",
-                               utc=True).dt.strftime("%Y-%m-%d")
     panel = (df[["block_number", "slot", "day", "block_hash", "value_eth", "relay"]]
              .rename(columns={"value_eth": "block_value_eth"})
              .sort_values("block_number").reset_index(drop=True))

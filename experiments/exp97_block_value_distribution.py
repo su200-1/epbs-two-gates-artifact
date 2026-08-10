@@ -105,44 +105,11 @@ def fig_distribution(v: np.ndarray) -> None:
     print(f"wrote {out}")
 
 
-def fig_reproducibility(v_new: np.ndarray) -> None:
-    if not OLD_PANEL.exists():
-        print(f"(skip reproducibility fig: {OLD_PANEL} not found)")
-        return
-    v_old = load(OLD_PANEL, "top_bid_eth")
-
-    fig, ax = plt.subplots(figsize=(6.4, 4.6))
-    for v, c, lab in [
-        (v_old, "#888888",
-         f"old panel 2025-12..2026-02 (raw top bid)\n"
-         f"med={np.median(v_old):.3f}, mean={np.mean(v_old):.3f}, "
-         f"p99.9={np.percentile(v_old,99.9):.2f}"),
-        (v_new, INK,
-         f"new panel 2026-02..07 (on-chain delivered)\n"
-         f"med={np.median(v_new):.3f}, mean={np.mean(v_new):.3f}, "
-         f"p99.9={np.percentile(v_new,99.9):.2f}"),
-    ]:
-        x, y = ccdf(v)
-        ax.loglog(x, y, color=c, lw=1.8, label=lab)
-    ax.set_xlim(1e-4, 2e3)
-    ax.set_ylim(1e-6, 1.3)
-    ax.set_xlabel("block value (ETH)")
-    ax.set_ylabel(r"P(value $>$ x)")
-    ax.set_title("Reproducibility: the tail shape holds on independent fresh data")
-    ax.legend(fontsize=8.5, loc="lower left")
-    fig.tight_layout()
-    out = FIG / "fig_panel_reproducibility.png"
-    fig.savefig(out, bbox_inches="tight")
-    fig.savefig(out.with_suffix(".pdf"), bbox_inches="tight")
-    print(f"wrote {out}")
-
-
 def main() -> None:
     FIG.mkdir(parents=True, exist_ok=True)
     v = load(NEW_PANEL, "block_value_eth")
     print(f"fresh panel: {len(v):,} blocks; " + annot(v).replace("\n", "  "))
     fig_distribution(v)
-    fig_reproducibility(v)
 
 
 if __name__ == "__main__":

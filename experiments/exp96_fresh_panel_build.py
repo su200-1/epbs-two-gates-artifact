@@ -1,9 +1,3 @@
-"""RETIRED -- superseded by exp103/exp104: fee-recipient matching does not identify the
-delivered block.
-
-Kept for provenance; not part of the reproduction path.
-"""
-
 """Experiment 96 -- build a fresh, on-chain-verified block-value panel from the
 2026 H1 RelayScan top-bid archives.
 
@@ -53,6 +47,11 @@ raw RelayScan top-bid archives and XBlock-ETH block-info CSVs on local disk (not
 bundled, too large); point RELAY_DIR and BLOCK_INFO_FILES below at your copies.
 
 Run: python experiments/exp96_fresh_panel_build.py
+
+RETIRED: superseded by exp103/exp104: fee-recipient matching does not identify the
+delivered block.
+
+Kept for provenance; not part of the reproduction path.
 """
 from __future__ import annotations
 

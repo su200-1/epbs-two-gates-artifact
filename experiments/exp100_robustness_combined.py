@@ -1,9 +1,3 @@
-"""RETIRED -- retired: combined figure built from the retired panels; the paper uses
-exp97-exp99.
-
-Kept for provenance; not part of the reproduction path.
-"""
-
 """Experiment 100 -- combined robustness figure (merges the former temporal and
 reproducibility panels into one two-panel figure, to keep Section 3 lean).
 
@@ -17,6 +11,11 @@ fig_robustness_combined.pdf:
 Reads the fresh panel from exp96 and the older bundled panel.
 
 Run: python experiments/exp100_robustness_combined.py
+
+RETIRED: retired: combined figure built from the retired panels; the paper uses
+exp97-exp99.
+
+Kept for provenance; not part of the reproduction path.
 """
 from __future__ import annotations
 

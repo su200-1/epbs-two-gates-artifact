@@ -1,9 +1,3 @@
-"""RETIRED -- retired: ran on the top-bid panel, which is no longer distributed, and backs
-no claim in the paper.
-
-Kept for provenance; not part of the reproduction path.
-"""
-
 """Experiment 88 -- gap-conditioned mainnet block-value calibration for the
 bribery economics (upgrades exp87 from a single-relay 4.8k sample to an
 8-relay, 493k-block auction panel, with an auxiliary descriptive stratification
@@ -47,6 +41,11 @@ Run:
     python experiments/exp88_gap_conditioned_block_value.py
     # or, to point at a different full panel with the same schema:
     python experiments/exp88_gap_conditioned_block_value.py --panel /path/to/panel.parquet
+
+RETIRED: retired: ran on the top-bid panel, which is no longer distributed, and backs
+no claim in the paper.
+
+Kept for provenance; not part of the reproduction path.
 """
 from __future__ import annotations
 

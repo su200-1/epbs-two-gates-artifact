@@ -54,7 +54,7 @@ RELAYS = [
 
 # Slot bounds of the panel window, 2026-02-21 .. 2026-07-10 inclusive,
 # read off the relayscan day files.
-SLOT_LO = 13_733_998
+SLOT_LO = 13_733_999   # 2026-02-21T00:00:11Z; 13_733_998 is still 2026-02-20
 SLOT_HI = 14_741_998
 
 PAGE = 200            # endpoint maximum for most relays

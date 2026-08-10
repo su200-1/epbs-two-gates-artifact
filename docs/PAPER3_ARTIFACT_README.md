@@ -134,7 +134,7 @@ $PY experiments/exp99_temporal_stability.py
 ```
 
 All three read `experiments/data/block_value_panel_delivered_2026H1.parquet`, which is
-bundled: **935,315 blocks**, 2026-02-21 to 2026-07-10 (UTC), median `0.0103`, mean
+bundled: **935,314 blocks**, 2026-02-21 to 2026-07-10 (UTC), median `0.0103`, mean
 `0.0284`, p99.9 `1.366`, max `568.43` ETH. Rebuilding it from scratch is optional:
 
 ```bash
@@ -144,7 +144,8 @@ $PY experiments/exp104_build_delivered_panel.py      # merge, adjudicate, verify
 
 `exp104` prints both cross-checks it runs: `parent_hash` chaining agrees with the
 delivered records on 100.0% of 172,088 overlapping block hashes (99.5% on values), and
-the builder fee recipient matches the on-chain coinbase for 930,109 of 935,315 blocks.
+the archive's `block_fee_recipient` for the delivered hash matches the on-chain coinbase
+on 99.995% of the 145,509 blocks where both exist (8 mismatches).
 It also reports the 314 reorganised heights, of which 216 are adjudicated by the
 chaining reconstruction and 98 dropped.
 
