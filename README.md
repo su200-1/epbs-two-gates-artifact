@@ -88,7 +88,7 @@ pip install uv && make _pyspec
 export EPBS_PYSPEC_DIR=$PWD/tests/core/pyspec
 ```
 
-Then `python -m pytest difftest/ -q` reports **293 passed, 0 skipped**. 206 of those
+Then `python -m pytest difftest/ -q` reports **293 passed, 0 skipped**. The suite refuses to run against a consensus-specs checkout other than the pinned commit, and names the one it found; set `EPBS_ALLOW_UNPINNED=1` to override. 206 of those
 tests execute the generated spec; the rest are simulator-internal conformance checks.
 The load-bearing predicates are run side by side with the spec rather than only
 compared on constants:
