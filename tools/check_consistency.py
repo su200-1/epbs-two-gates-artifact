@@ -229,7 +229,15 @@ def check_translation(zh: Path) -> None:
     en_sections = len([m for m in re.findall(r"\\section\{([^}]*)\}", body)
                        if m not in ("Specification excerpts", "Supporting tables")])
     en_subs = len(re.findall(r"\n\\subsection\{", body))
+    # The submission is split: appendix listings and tables moved to
+    # supplementary.tex, while the Chinese draft is one document. Count both
+    # sides of the split against it.
+    supp = MS / "supplementary.tex"
     en_floats = len(re.findall(r"\\caption\{", src))
+    if supp.exists():
+        # Only captioned floats: the Chinese draft renders the four spec
+        # listings as bullet pointers, not as float-like blocks.
+        en_floats += len(re.findall(r"\\caption\{", supp.read_text()))
     zt = zh.read_text()
     zh_sections = len(re.findall(r"^## \d", zt, re.M))
     zh_subs = len(re.findall(r"^### \d", zt, re.M))

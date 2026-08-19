@@ -1,8 +1,7 @@
 # Two Fixed-Seat Paths to Payload Orphaning in ePBS — reproducibility artifact
 
 Artifact for *Two Fixed-Seat Paths to Payload Orphaning in ePBS*. The manuscript is
-not distributed here while it is under review; the accepted version will be linked
-once it is available.
+not distributed here; it will be linked once published.
 
 The paper prices a specification-level design trade-off in Ethereum's enshrined
 Proposer-Builder Separation (ePBS, EIP-7732 / `gloas`): the builder-payment predicate

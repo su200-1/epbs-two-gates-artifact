@@ -289,7 +289,6 @@ high-MEV theft calibrations cannot overwrite each other.
 
 ## Manuscript
 
-Not distributed with this artifact while the paper is under review. The accepted
-version will be linked from the top-level `README.md` once it is available; this
-document is written to stand on its own in the meantime, mapping each claim to the
-command that reproduces it.
+Not distributed with this artifact; it will be linked from the top-level
+`README.md` once published. This document is written to stand on its own in the
+meantime, mapping each claim to the command that reproduces it.
