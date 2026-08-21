@@ -59,12 +59,35 @@ policy, so nothing in `exp84`/`exp85` backs a claim.
 panels they read are no longer distributed: `exp88`, `exp94`, `exp96`, `exp100`.
 They are excluded from `reproduce_paper3.sh` and exit with a missing-file error.
 
+## Shared infrastructure
+
+The simulator (`epbs/`, `config.py`) and the differential-test suite are shared
+infrastructure, developed across more than one study of ePBS incentives. This artifact
+carries the subset this paper needs. The analyses specific to this paper are the
+`exp81`–`exp104` series.
+
+Four files come from that shared layer rather than from this paper, and are present
+because `reproduce_paper3.sh` transitively needs three of them:
+
+| File | Why it is here |
+|---|---|
+| `experiments/exp27_epbs_selfish_builder_markout.py` | `exp81` and `exp86` import `MarkoutParams`, `MarkoutHooks`, `HONEST_POLICY` and the mark-to-settlement debit convention `_builder_debit_mark_to_settlement` from it |
+| `experiments/exp14_common.py` | `exp27` imports `artifact_metadata` and `paired_summary` from it |
+| `experiments/exp16_epbs_risk_aware.py` | `exp27` imports its `OUT_DIR` |
+| `experiments/exp14_state_conditional.py` | shared; not cited by this paper and not run by `reproduce_paper3.sh` |
+
+No result reported in this paper is reused from, or depends on, any other study built on
+that shared infrastructure: the two-gate boundary, the orphan-persistence check, the
+mitigation stress test, the mutation audit, and the delivered-payload panel are all
+produced by the `exp81`–`exp104` series listed above.
+
 ## Layout
 
 ```
 config.py                     protocol constants (PTC_SIZE, thresholds, ...)
 epbs/                         spec-anchored simulator port
-experiments/                  experiments cited by the paper
+experiments/                  this paper's exp81-exp104 series, plus the few
+                              shared-layer files they import (see above)
   data/                       bundled delivered-payload panel (72 MB)
   figures/drl_risk_epbs/      generated results (JSON/CSV tracked; PNG/PDF regenerated)
   reproduce_paper3.sh         one-shot reproduction
