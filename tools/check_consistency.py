@@ -11,7 +11,8 @@ Checks
   2  figure vs text     numbers drawn inside a figure appear in main.tex
   3  data vs text       statistics recomputed from the panel appear in main.tex
   4  data vs docs       the same statistics appear in README and the artifact README
-  5  labels             every \\ref resolves; every \\label is referenced
+  5  labels             every \\ref resolves; every \\label is referenced; the
+                        section labels the docs name exist and are not numbers
   6  entry point        reproduce_paper3.sh runs nothing retired, and every script
                         it names exists and compiles
   7  translation        (optional, --zh PATH) section and float counts line up
@@ -171,6 +172,25 @@ def check_labels() -> None:
           f"dangling: {dangling}" if dangling else f"{len(refs)} refs")
     check("no unreferenced float labels", not unused,
           f"unused: {unused}" if unused else f"{len(labels)} labels")
+
+    # The artifact docs used to name sections by number. Numbers move -- reordering
+    # Spec-Faithfulness Audit ahead of the economics silently invalidated four of
+    # them at once -- so the docs now key sections by label, and this check keeps
+    # those keys honest.
+    doc_refs: set[str] = set()
+    for d in (ROOT / "README.md", ROOT / "docs" / "PAPER3_ARTIFACT_README.md"):
+        if d.exists():
+            doc_refs |= set(re.findall(r"`(sec:[A-Za-z0-9_-]+)`", d.read_text()))
+    stale = sorted(doc_refs - labels)
+    check(f"section labels named in the docs exist  {len(doc_refs)} refs",
+          not stale, f"no such label: {stale}" if stale else "")
+    hard = sorted(set(re.findall(
+        r"\u00a7\s?\d+(?:\.\d+)?",
+        "".join(d.read_text() for d in
+                (ROOT / "README.md", ROOT / "docs" / "PAPER3_ARTIFACT_README.md")
+                if d.exists()))))
+    check("no hard-coded section numbers in the docs", not hard,
+          f"found: {hard}" if hard else "")
 
     log = MS / "main.log"
     if log.exists():

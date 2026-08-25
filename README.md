@@ -7,12 +7,12 @@ The paper prices a specification-level design trade-off in Ethereum's enshrined
 Proposer-Builder Separation (ePBS, EIP-7732 / `gloas`): the builder-payment predicate
 never reads the Payload Timeliness Committee's (PTC) vote, and the payload-timeliness
 predicate never reads the payment. That decoupling admits two routes to discarding a
-punctually revealed payload: the next proposer's build rule is overridden by 257
+payload revealed on time: the next proposer's build rule is overridden by 257
 validly signed *not-present* votes (needing no cooperation from that proposer), while
 fork choice's payload tiebreaker is defeated by merely *withholding* the corresponding
 affirmation — 256 silent seats suffice — combined with control of the next slot's
-proposer. Both counts are fixed, independent of total stake; the builder is still
-debited for the block either way.
+proposer. Both counts are fixed, independent of total stake; the builder is debited
+for the block either way, provided the independent regular-attestation quorum holds.
 
 ## Quick start
 
@@ -35,20 +35,20 @@ section is listed with the command that reproduces it and the numbers to expect.
 | Paper element | Command |
 |---|---|
 | Exact two-gate boundary (Table `tab:boundary`) | `python experiments/exp92_exact_ptc_payment_boundary.py` |
-| Scaled end-to-end sanity check (§2, orphan-and-still-pay) | `python experiments/exp81_ptc_orphan_probe.py --seeds 8 --slots 64` |
-| Orphan persistence past the boost window (§2.5) | `python experiments/exp102_orphan_persistence.py` |
+| Scaled end-to-end sanity check (`sec:mechanism`, orphan-and-still-pay) | `python experiments/exp81_ptc_orphan_probe.py --seeds 8 --slots 64` |
+| Orphan persistence past the boost window (`sec:persistence`) | `python experiments/exp102_orphan_persistence.py` |
 | Non-participation asymmetry (Table `tab:participation`) | — analytic; no experiment |
-| Operator shares behind §3.1's 37.2 % / 7.45 % | `python experiments/exp95_empirical_operator_concentration.py` |
+| Operator shares behind `sec:pivotal`'s 37.2 % / 7.45 % | `python experiments/exp95_empirical_operator_concentration.py` |
 | Block-value distribution (Figure `fig:valuedist`) | `python experiments/exp97_block_value_distribution.py` |
 | Break-even frontier (Figure `fig:breakeven`) | `python experiments/exp98_breakeven_frontier.py` |
 | Temporal stability (Figure `fig:robust`) | `python experiments/exp99_temporal_stability.py` |
 | Mitigation stress test (Table `tab:mit`) | `python experiments/exp86_mitigation_eval.py` |
 | Mutation audit (Table `tab:mutation`) | `python experiments/exp101_mutation_audit.py` |
-| Spec-faithfulness audit (§4) | `python -m pytest difftest/ -q` |
+| Spec-faithfulness audit (`sec:specaudit`) | `python -m pytest difftest/ -q` |
 | Delivered-payload panel build (935,314 blocks) | `python experiments/exp103_fetch_delivered_payloads.py && python experiments/exp104_build_delivered_panel.py` (optional — panel bundled) |
 
-Floats are keyed by LaTeX label rather than by number, because the numbering shifts as the
-manuscript is revised.
+Sections and floats alike are keyed by LaTeX label rather than by number, because the
+numbering shifts as the manuscript is revised.
 
 Retained but **not cited by the paper**: `exp82`, `exp83`, `exp84`, `exp85`, `exp87`,
 `exp93`. Kept for provenance — `exp93` is superseded by `exp95` (measured node-operator

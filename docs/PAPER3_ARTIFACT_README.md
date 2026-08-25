@@ -38,9 +38,10 @@ bash experiments/reproduce_paper3.sh
 
 ## Claim → command map
 
-Each row is a paper section, its command, and the headline it reproduces.
+Each row is a paper section -- keyed by its LaTeX label, since section numbers shift
+as the manuscript is revised -- its command, and the headline it reproduces.
 
-### §4 The Payload-Timeliness Orphaning Attack (exact two-gate boundary)
+### The Timeliness Predicate, Queried in Both Directions (`sec:mechanism`) — exact two-gate boundary
 
 ```bash
 $PY experiments/exp92_exact_ptc_payment_boundary.py
@@ -56,7 +57,7 @@ builder debit and proposer credit of `10^8` gwei, every expiring cell records ze
 Output schema `exact-ptc-payment-boundary-v1`, written to
 `exp92_exact_ptc_payment_boundary.json` and `.md`.
 
-### §4 The Payload-Timeliness Orphaning Attack (scaled end-to-end sanity check)
+### The Timeliness Predicate, Queried in Both Directions (`sec:mechanism`) — scaled end-to-end sanity check
 
 ```bash
 $PY experiments/exp81_ptc_orphan_probe.py --seeds 8 --slots 64
@@ -74,7 +75,7 @@ denominator.  The builder debit remains `259.0M` gwei and
 pooled aggregation rule and censoring note, and is written to
 `exp81_ptc_orphan_probe_s8_t64.json`.
 
-### §5 Reservation-Price Sensitivity: A Fixed Pivotal Set
+### The pivotal set and its price (`sec:pivotal`) — reservation-price sensitivity
 
 ```bash
 $PY experiments/exp82_ptc_bribe_economics.py
@@ -99,7 +100,7 @@ free; positive prices may reflect coordination, reputation, legal exposure,
 counter-bribes, and pivotal-seat holdout power. The `exp82-v3` output is
 `exp82_ptc_bribe_economics.json`.
 
-### §6 Victim Harm and MEV Re-capture
+### Victim harm, break-even, and re-capture (`sec:theft`)
 
 Unconditional griefing (default calibration):
 
@@ -149,7 +150,7 @@ on 99.995% of the 145,509 blocks where both exist (8 mismatches).
 It also reports the 314 reorganised heights, of which 216 are adjudicated by the
 chaining reconstruction and 98 dropped.
 
-### §7 Spec-Faithfulness Audit
+### Spec-Faithfulness Audit (`sec:specaudit`)
 
 ```bash
 $PY -m pytest difftest/ -q                       # 293 passed, 0 skipped
@@ -184,7 +185,7 @@ If the pyspec is absent, the `TestAgainstPyspec` layer self-skips with
 `gloas pyspec not importable`; the sim-internal behavioral tests still run. Override
 the generated-spec path with `EPBS_PYSPEC_DIR`.
 
-### §Deployment Requirements and Evidentiary Boundary
+### What the economics leave open (`sec:feasibility`) — deployment preconditions
 
 The manuscript states four deployment preconditions (recruitment, verifiable
 conditional payment, ex-ante targeting, re-capture) and reports **no** learned
@@ -209,7 +210,7 @@ evidence rather than a formal out-of-sample superiority test: learning does not
 strengthen the attack claim. → `exp84_selective_attack_oracle_s*.json`,
 `exp85_selective_attack_neural_bf0.3_pseat0p0014.json`.
 
-### §Mitigations
+### Mitigations and Defenses (`sec:mitigations`)
 
 ```bash
 $PY experiments/exp86_mitigation_eval.py
@@ -222,7 +223,7 @@ a stake-weighted / enlarged PTC (M3) turns the fixed 257-vote pivotal set back i
 stake share, restoring the payment gate's stake-dependence.
 → `exp86_mitigation_eval_s16.json`.
 
-### §Feasibility (empirical block-value calibration)
+### Calibration: block value and the re-capture proxy (`sec:calibration`)
 
 ```bash
 $PY experiments/exp87_empirical_block_value.py
@@ -246,7 +247,7 @@ result: `exp87_empirical_block_value.json`.
 > (`exp103` + `exp104`). The scripts are kept for provenance and marked retired in their
 > own docstrings; they back no claim in the manuscript.
 
-### §Feasibility (PTC operator concentration)
+### The pivotal set and its price (`sec:pivotal`) — PTC operator concentration
 
 ```bash
 $PY experiments/exp93_ptc_operator_concentration.py
