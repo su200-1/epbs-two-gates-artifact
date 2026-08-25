@@ -4,12 +4,12 @@ Turns the paper's economic table (tab:economics / tab:theft) into a picture.
 Cost model, identical to exp94:
     marginal seats  = max(257 - 512*f, 0)      f = attacker-owned stake fraction
     recruitment cost = marginal_seats * p_seat  p_seat = exogenous per-seat price
-    block t is profitable to attack  <=>  rho * value_t > recruitment_cost
+    block t clears break-even  <=>  rho * value_t > recruitment_cost
 The curve is the ex-post share of panel blocks that clear that bar -- coverage,
 not realized profit.
 
 fig_breakeven_frontier.png : two panels (f = 0 and f = 1/3). x = per-seat price
-(log), y = % of blocks profitable to attack, one line per re-capture ratio rho.
+(log), y = % of blocks clearing break-even, one line per re-capture ratio rho.
 Reads the on-chain-verified fresh panel from exp96.
 
 Run: python experiments/exp98_breakeven_frontier.py
@@ -72,7 +72,7 @@ def main() -> None:
         ax.set_title(fr"$f={f:.3f}$   (marginal seats $={marginal:.0f}$)")
         for mp in MARK_PRICES:
             ax.axvline(mp, color="0.8", ls=":", lw=0.8, zorder=0)
-    axes[0].set_ylabel("blocks profitable to attack (%)")
+    axes[0].set_ylabel("ex-post break-even coverage (%)")
     axes[0].legend(title="re-capture", fontsize=9, loc="upper right")
     axes[0].set_ylim(0, 100)
 

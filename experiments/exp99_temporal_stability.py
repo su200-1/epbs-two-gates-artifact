@@ -5,7 +5,7 @@ the distribution is stable across the whole 2026-02..07 span.
 
 fig_temporal_stability.png : two stacked panels sharing the time axis.
   (top)    daily median / p95 / p99 of block value (log y);
-  (bottom) daily share of blocks profitable to attack at a fixed operating
+  (bottom) daily share of blocks clearing break-even at a fixed operating
            point (f=0, p_seat=0.001 ETH, rho=1.0) -- one concrete slice of the
            break-even frontier tracked over time.
 
@@ -71,7 +71,7 @@ def main() -> None:
     ax2.plot(daily.index, 100 * daily["attackable"], color="#4a7", lw=1.6)
     ax2.fill_between(daily.index, 0, 100 * daily["attackable"],
                      color="#4a7", alpha=0.18)
-    ax2.set_ylabel("blocks profitable (%)")
+    ax2.set_ylabel("break-even coverage (%)")
     ax2.set_title(fr"Daily attackable share at $f=0,\ "
                   fr"p_{{\mathrm{{seat}}}}=0.001$ ETH, $\rho=1$ "
                   fr"(cost $={cost:.3f}$ ETH)")
